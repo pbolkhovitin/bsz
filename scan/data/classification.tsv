@@ -1,0 +1,231 @@
+192.168.40.1 	 Network-Device/Router 	 pfsense.localdomain 	 domain (dnsmasq) 2.86;http (nginx);http (nginx)
+192.168.40.10 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;http (Microsoft HTTPAPI httpd) 2.0;realserver
+192.168.40.11 	 Network-Device/Router 	  	 realserver
+192.168.40.16 	 Embedded/Other 	  	 http
+192.168.40.22 	 Unidentified 	  	 
+192.168.40.23 	 Unidentified 	  	 
+192.168.40.25 	 Embedded/Other 	  	 http
+192.168.40.26 	 Unidentified 	  	 
+192.168.40.27 	 VoIP-Phone 	  	 http (lighttpd);sip
+192.168.40.28 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;vmware-auth (VMware Authentication Daemon) 1.10;vmware-auth (VMware Authentication Daemon) 1.0;realserver
+192.168.40.29 	 Embedded/Other 	  	 http
+192.168.40.30 	 Embedded/Other 	  	 asterix
+192.168.40.33 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;realserver
+192.168.40.35 	 Embedded/Other 	  	 http
+192.168.40.36 	 Unidentified 	  	 
+192.168.40.41 	 Embedded/Other 	  	 synchronet-db
+192.168.40.42 	 Printer 	  	 upnp (Epson WorkForce WF-2540 printer UPnP);https;printer;upnp;jetdirect
+192.168.40.46 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.40.47 	 Unidentified 	  	 
+192.168.40.48 	 Unidentified 	  	 
+192.168.40.50 	 Embedded/Other 	  	 http;https
+192.168.40.51 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.40.53 	 Printer 	  	 http (Debut embedded httpd) 1.30;http (Debut embedded httpd) 1.30;printer;http (Debut embedded httpd) 1.30;jetdirect
+192.168.40.55 	 Embedded/Other 	  	 http
+192.168.40.60 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.40.61 	 Printer 	  	 http;https;printer;ipp;radan-http;jetdirect
+192.168.40.62 	 Embedded/Other 	  	 http
+192.168.40.63 	 Network-Device/Router 	  	 
+192.168.40.64 	 Printer 	  	 http (Microsoft HTTPAPI httpd) 2.0;realserver
+192.168.40.65 	 Unidentified 	  	 
+192.168.40.66 	 Embedded/Other 	  	 http;https
+192.168.40.72 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;http (Microsoft HTTPAPI httpd) 2.0;realserver
+192.168.40.74 	 Embedded/Other 	  	 http;https
+192.168.40.76 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.40.77 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds
+192.168.40.79 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;http (Microsoft HTTPAPI httpd) 2.0;realserver
+192.168.40.80 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;http (Microsoft HTTPAPI httpd) 2.0;realserver
+192.168.40.82 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.40.83 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;realserver
+192.168.40.85 	 Windows-RDP/Workstation 	  	 msrpc (Microsoft Windows RPC);microsoft-ds;http (Microsoft HTTPAPI httpd) 2.0
+192.168.40.87 	 Unidentified 	  	 
+192.168.40.88 	 Embedded/Other 	  	 http
+192.168.40.90 	 Embedded/Other 	  	 http (LG smart TV http service);http (LG smart TV http service);distinct32
+192.168.40.92 	 Windows-RDP/Workstation 	  	 msrpc (Microsoft Windows RPC);microsoft-ds;http (Microsoft HTTPAPI httpd) 2.0
+192.168.40.93 	 VoIP-Phone 	  	 http (lighttpd);sip
+192.168.40.94 	 Embedded/Other 	  	 realserver
+192.168.40.97 	 Network-Device/Router 	  	 
+192.168.40.103 	 Embedded/Other 	  	 http (Microsoft HTTPAPI httpd) 2.0
+192.168.40.115 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.40.117 	 Embedded/Other 	  	 tcpwrapped;iphone-sync
+192.168.40.118 	 Embedded/Other 	  	 http (Microsoft HTTPAPI httpd) 2.0
+192.168.40.120 	 Printer 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;realserver
+192.168.40.123 	 Network-Device/Router 	  	 http;https
+192.168.40.124 	 Unidentified 	  	 
+192.168.40.128 	 VoIP-Phone 	  	 http (lighttpd);sip
+192.168.40.129 	 Unidentified 	  	 
+192.168.40.131 	 Unidentified 	  	 
+192.168.40.134 	 Embedded/Other 	  	 realserver
+192.168.40.141 	 Unidentified 	  	 
+192.168.40.145 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;mmcc;ida-agent;http (Microsoft HTTPAPI httpd) 2.0;realserver
+192.168.40.146 	 Embedded/Other 	  	 http
+192.168.40.147 	 Unidentified 	  	 
+192.168.40.149 	 Unidentified 	  	 
+192.168.40.150 	 Unidentified 	  	 
+192.168.40.153 	 Unidentified 	  	 
+192.168.40.155 	 IP-Camera/NVR 	  	 http;rtsp;rtmp;d-s-n
+192.168.40.157 	 Embedded/Other 	  	 bittorrent-tracker;realserver
+192.168.40.159 	 VoIP-Phone 	  	 http (lighttpd);sip
+192.168.40.163 	 Printer 	  	 http;https;printer;ipp;http-proxy;jetdirect
+192.168.40.164 	 Embedded/Other 	  	 http;https
+192.168.40.165 	 Embedded/Other 	  	 realserver
+192.168.40.167 	 Unidentified 	  	 
+192.168.40.170 	 Unidentified 	  	 
+192.168.40.172 	 Unidentified 	  	 
+192.168.40.175 	 Printer 	  	 ftp;tcpwrapped;printer;tcpwrapped;jetdirect
+192.168.40.178 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;sentinelsrm;enpp;realserver
+192.168.40.180 	 Unidentified 	  	 
+192.168.40.181 	 Unidentified 	  	 
+192.168.40.184 	 Industrial-Controller 	  	 
+192.168.40.188 	 Embedded/Other 	  	 http;https
+192.168.40.189 	 Embedded/Other 	  	 http
+192.168.40.190 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.40.192 	 Unidentified 	  	 
+192.168.40.193 	 Unidentified 	  	 
+192.168.40.194 	 Unidentified 	  	 
+192.168.40.195 	 Embedded/Other 	  	 http
+192.168.40.201 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;dsf;ms-wbt-server;postgresql;http-proxy
+192.168.40.202 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;dsf;ms-wbt-server (Microsoft Terminal Services);postgresql;realserver;http-proxy;soap (gSOAP) 2.8
+192.168.40.211 	 Industrial-Controller 	  	 http;snet-sensor-mgmt;scp-config;documentum
+192.168.40.212 	 Industrial-Controller 	  	 http;snet-sensor-mgmt;scp-config;documentum;documentum_s
+192.168.40.213 	 Printer 	  	 http (nginx);http (nginx);printer;http (nginx);http (nginx);jetdirect
+192.168.40.215 	 Windows-RDP/Workstation 	  	 http;msrpc (Microsoft Windows RPC);microsoft-ds;websocket (Ogar agar.io server);http (Microsoft HTTPAPI httpd) 2.0;realserver;blackice-icecap
+192.168.40.228 	 VoIP-Phone 	  	 ssh (Dropbear sshd) 2018.76;http (mini_httpd) 1.30 26Oct2018
+192.168.40.230 	 VoIP-Phone 	  	 ssh (Dropbear sshd) 2018.76;http (mini_httpd) 1.30 26Oct2018
+192.168.40.233 	 Printer 	  	 http (HP LaserJet Pro MFP config httpd);printer;ipp;http (HP LaserJet Pro MFP config httpd);jetdirect
+192.168.40.234 	 IP-Camera/NVR 	  	 ftp (oftpd);telnet (security DVR telnetd);tcpwrapped;rtsp;rtmp;X11;upnp (Portable SDK for UPnP devices) 1.6.17
+192.168.40.235 	 Printer 	 erproc.erb 	 upnp (Epson WorkForce WF-2540 printer UPnP);netbios-ssn;https;microsoft-ds (Epson WF-2650 printer smbd);printer;upnp (Epson WorkForce WF-2540 printer UPnP);jetdirect
+192.168.40.236 	 Printer 	  	 http (nginx);http (nginx);printer;http (nginx);http (nginx);jetdirect
+192.168.40.240 	 Printer 	  	 tcpwrapped;netbios-ssn;tcpwrapped;microsoft-ds (Epson WF-2650 printer smbd);printer;tcpwrapped;jetdirect
+192.168.40.241 	 Web/App-Server 	  	 http-alt
+192.168.40.242 	 Web/App-Server 	  	 http-alt
+192.168.40.243 	 Printer 	  	 http (Debut embedded httpd) 1.30;http (Debut embedded httpd) 1.30;printer;http (Debut embedded httpd) 1.30;jetdirect
+192.168.40.244 	 Web/App-Server 	  	 http-alt
+192.168.40.245 	 Web/App-Server 	  	 http-alt
+192.168.40.247 	 Printer 	  	 http (nginx);http (nginx);printer;http (nginx);http (nginx);jetdirect
+192.168.40.248 	 Printer 	  	 http (nginx);http (nginx);printer;http (nginx);http (nginx);jetdirect
+192.168.40.251 	 Windows-Workstation/Server 	  	 http (Microsoft IIS httpd) 10.0;msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;ms-wbt-server (Microsoft Terminal Services);postgresql;realserver;intermapper
+192.168.40.254 	 Embedded/Other 	 tpt14g1-fedora 	 realserver
+192.168.41.10 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;tcpwrapped
+192.168.41.17 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0
+192.168.41.18 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;http (Microsoft HTTPAPI httpd) 2.0
+192.168.41.31 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.33 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.34 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.35 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.36 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.37 	 IP-Camera/NVR 	  	 telnet (security DVR telnetd);http;rtsp;soap (gSOAP) 2.8;upnp;mmcc;tcpwrapped;ipcam (Hikvision IPCam control port)
+192.168.41.38 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.39 	 IP-Camera/NVR 	  	 http (uc-httpd) 1.0.0;rtsp (H264DVR rtspd) 1.0;soap (gSOAP) 2.7
+192.168.41.40 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.41 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.42 	 IP-Camera/NVR 	  	 http (uc-httpd) 1.0.0;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.43 	 IP-Camera/NVR 	  	 http (uc-httpd) 1.0.0;rtsp (H264DVR rtspd) 1.0;soap (gSOAP) 2.7
+192.168.41.44 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.45 	 IP-Camera/NVR 	  	 http (uc-httpd) 1.0.0;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.46 	 IP-Camera/NVR 	  	 http;rtsp;rtmp
+192.168.41.47 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.48 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.49 	 IP-Camera/NVR 	  	 http;rtsp;rtmp
+192.168.41.50 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.51 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.52 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.53 	 Industrial-Controller 	  	 http (uc-httpd) 1.0.0;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.54 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.55 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.56 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.57 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.58 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.59 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.60 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.61 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.62 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;ospf-lite
+192.168.41.63 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;ospf-lite
+192.168.41.68 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.69 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;ospf-lite
+192.168.41.70 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.71 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.72 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;ospf-lite
+192.168.41.73 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.74 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.75 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.76 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.77 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.78 	 IP-Camera/NVR 	  	 http;rtsp;soap (gSOAP) 2.8;upnp;mmcc;tcpwrapped;ipcam (Hikvision IPCam control port)
+192.168.41.79 	 IP-Camera/NVR 	  	 telnet (security DVR telnetd);http;rtsp;soap (gSOAP) 2.8;upnp;mmcc;tcpwrapped;ipcam (Hikvision IPCam control port)
+192.168.41.87 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.88 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.89 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.90 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.91 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.92 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.93 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.94 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.95 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.96 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.97 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.98 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.99 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.100 	 IP-Camera/NVR 	  	 http;https;rtsp;http-alt
+192.168.41.101 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.103 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.104 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.105 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.106 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.107 	 IP-Camera/NVR 	  	 http;https;rtsp;http-alt
+192.168.41.108 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.109 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.111 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped;https-alt
+192.168.41.112 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.113 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.114 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.115 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.116 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.119 	 Industrial-Controller 	  	 http;rtsp (H264DVR rtspd) 1.0;http-alt;soap (gSOAP) 2.7
+192.168.41.124 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.127 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.128 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.129 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.130 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.131 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.132 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.133 	 Embedded/Other 	  	 http (Microsoft HTTPAPI httpd) 2.0
+192.168.41.134 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.135 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.136 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.141 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.143 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.144 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.145 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.146 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.147 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.148 	 IP-Camera/NVR 	  	 http;rtsp;rtmp;upnp
+192.168.41.149 	 IP-Camera/NVR 	  	 http;https;rtsp;http-alt
+192.168.41.150 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.156 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.158 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.159 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.160 	 IP-Camera/NVR 	  	 http;rtsp;d-s-n
+192.168.41.162 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.163 	 IP-Camera/NVR 	  	 http;rtsp;rtmp;upnp
+192.168.41.164 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.165 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.166 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.167 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.168 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.169 	 IP-Camera/NVR 	  	 http;rtsp;tcpwrapped
+192.168.41.170 	 IP-Camera/NVR 	  	 http;rtsp
+192.168.41.199 	 Unidentified 	  	 
+192.168.41.200 	 Embedded/Other 	  	 realserver
+192.168.41.201 	 Industrial-Controller 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;dsf;ms-wbt-server;postgresql;http-proxy
+192.168.41.202 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;dsf;ms-wbt-server (Microsoft Terminal Services);postgresql;realserver;http-proxy;soap (gSOAP) 2.8
+192.168.41.216 	 IP-Camera/NVR 	  	 http;https;rtsp;tcpwrapped
+192.168.41.220 	 Network-Device/Router 	  	 http;https
+192.168.41.221 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.41.222 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.41.225 	 Embedded/Other 	  	 http;https;coldfusion-auth
+192.168.41.236 	 IP-Camera/NVR 	  	 ftp (oftpd);telnet (security DVR telnetd);tcpwrapped;rtsp;veritas_pbx;rtmp;X11;upnp (Portable SDK for UPnP devices) 1.6.17
+192.168.41.243 	 Unidentified 	  	 
+192.168.41.250 	 Windows-Workstation/Server 	  	 http (Microsoft HTTPAPI httpd) 2.0;msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;ms-wbt-server (Microsoft Terminal Services);postgresql;realserver;intermapper
+192.168.41.251 	 Windows-Workstation/Server 	  	 msrpc (Microsoft Windows RPC);netbios-ssn (Microsoft Windows netbios-ssn);microsoft-ds;realserver
+192.168.41.254 	 Embedded/Other 	 tpt14g1-fedora 	 realserver

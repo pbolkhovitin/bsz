@@ -1,0 +1,105 @@
+ip,mac,vendor,mac_type
+172.17.102.1,04:f4:1c:65:27:ee,Unknown,
+172.17.102.11,c4:fc:22:32:c7:67,Unknown,
+172.17.102.12,c4:fc:22:32:a9:85,Unknown,
+172.17.102.13,c4:fc:22:32:a9:2d,Unknown,
+172.17.102.14,c4:fc:22:32:a6:a7,Unknown,
+172.17.102.15,c0:74:ad:3d:32:96,Grandstream Networks,
+172.17.102.16,c0:74:ad:3d:32:af,Grandstream Networks,
+172.17.102.20,58:04:4f:b4:7c:28,Unknown,
+172.17.102.21,b0:a7:b9:e7:17:3f,TP-Link Limited,
+172.17.102.22,ac:15:a2:a1:61:fe,Unknown,
+172.17.102.23,dc:62:79:b3:3d:40,Unknown,
+172.17.102.24,5c:e9:31:bd:f4:94,Unknown,
+172.17.102.25,5c:e9:31:bd:f5:58,Unknown,
+172.17.102.26,6c:4c:bc:d2:e0:5c,Unknown,
+172.17.102.27,ac:15:a2:8d:0c:36,Unknown,
+172.17.102.28,f0:a7:31:b2:f0:94,Unknown,
+172.17.102.29,98:25:4a:c9:f2:5e,Unknown,
+172.17.102.30,98:25:4a:c9:f3:f6,Unknown,
+172.17.102.31,98:25:4a:c9:f4:cc,Unknown,
+172.17.102.40,50:ff:20:db:79:fa,Keenetic Limited,
+172.17.102.41,de:85:96:c6:d7:84,Unknown,locally-admin
+172.17.102.42,b4:b8:53:1a:ac:9f,Unknown,
+172.17.102.43,7c:4d:8f:9f:2d:36,Unknown,
+172.17.102.44,40:7a:a4:c6:97:ee,Zhejiang Dahua Technology,
+172.17.102.47,40:7a:a4:c6:b1:a5,Zhejiang Dahua Technology,
+172.17.102.48,40:7a:a4:c6:b3:cc,Zhejiang Dahua Technology,
+172.17.102.50,28:c5:c8:72:34:99,Unknown,
+172.17.102.51,28:c5:c8:dd:b3:91,Unknown,
+172.17.102.52,10:6f:d9:33:86:2a,Cloud Network Technology Singapore PTE.,
+172.17.102.53,f8:25:51:c3:b3:16,Unknown,
+172.17.102.54,30:13:8b:4a:9c:c3,Unknown,
+172.17.102.55,24:fb:e3:0e:c8:46,Unknown,
+172.17.102.56,10:5b:ad:3d:6b:0d,Mega Well Limited,
+172.17.102.57,9c:ae:d3:08:15:11,Seiko Epson,
+172.17.102.58,f2:21:d1:71:66:fe,Unknown,locally-admin
+172.17.102.59,d8:ce:3a:d3:6b:9f,Xiaomi Communications,
+172.17.102.61,40:7a:a4:c6:ab:fb,Zhejiang Dahua Technology,
+172.17.102.63,40:7a:a4:c6:9f:4b,Zhejiang Dahua Technology,
+172.17.102.65,b4:22:00:cc:50:66,Brother Industries,
+172.17.102.69,3e:78:95:05:c5:ac,Unknown,locally-admin
+172.17.102.70,d0:c6:37:6e:01:c7,Intel Corporate,
+172.17.102.75,3e:78:95:05:c5:ac,Unknown,locally-admin
+172.17.102.77,62:f2:6e:90:a3:81,Unknown,locally-admin
+172.17.102.80,f6:00:a7:ce:0d:43,Unknown,locally-admin
+172.17.102.81,40:7a:a4:c6:b0:83,Zhejiang Dahua Technology,
+172.17.102.84,8e:66:97:bb:56:6b,Unknown,locally-admin
+172.17.102.87,0a:e8:d6:74:c5:a3,Unknown,locally-admin
+172.17.102.88,d8:43:ae:47:90:ab,Unknown,
+172.17.102.90,6e:78:06:73:a2:c2,Unknown,locally-admin
+172.17.102.95,cc:47:40:7a:a1:04,Unknown,
+172.17.102.96,c2:fd:0c:e6:72:44,Unknown,locally-admin
+172.17.102.99,3e:78:95:05:c5:ac,Unknown,locally-admin
+172.17.102.104,fc:9d:05:5c:14:19,Unknown,
+172.17.102.105,5a:12:89:0d:8c:19,Unknown,locally-admin
+172.17.102.108,36:6f:eb:a6:42:3f,Unknown,locally-admin
+172.17.102.109,1a:d2:0e:23:dc:16,Unknown,locally-admin
+172.17.102.110,fc:9d:05:5c:14:08,Unknown,
+172.17.102.112,4a:3f:92:ec:92:e6,Unknown,locally-admin
+172.17.102.113,1c:bf:c0:f4:f1:41,Chongqing Fugui Electronics,
+172.17.102.114,36:67:cf:5f:e3:62,Unknown,locally-admin
+172.17.102.116,70:66:55:83:c2:0f,AzureWave Technology,
+172.17.102.117,9c:ae:d3:b5:c2:78,Seiko Epson,
+172.17.102.119,10:f0:05:5f:01:f9,Intel Corporate,
+172.17.102.130,40:7a:a4:c6:b4:d1,Zhejiang Dahua Technology,
+172.17.102.132,da:e8:39:39:c9:57,Unknown,locally-admin
+172.17.102.133,64:4e:d7:62:72:ad,Unknown,
+172.17.102.134,66:aa:ea:87:e6:9c,Unknown,locally-admin
+172.17.102.137,60:ff:9e:57:4a:21,Unknown,
+172.17.102.149,ec:8e:b5:21:53:a1,Hewlett Packard,
+172.17.102.150,40:7a:a4:c6:b1:88,Zhejiang Dahua Technology,
+172.17.102.153,40:7a:a4:c6:9a:c3,Zhejiang Dahua Technology,
+172.17.102.154,9c:ae:d3:08:37:98,Seiko Epson,
+172.17.102.155,d8:bb:c1:ce:56:a7,Micro-star Intl,
+172.17.102.156,a0:6f:aa:1d:04:90,LG Innotek,
+172.17.102.158,c0:18:03:59:93:dc,Unknown,
+172.17.102.161,2c:ab:25:ff:27:49,Shenzhen Gongjin Electronics,
+172.17.102.171,2a:63:3e:f2:1d:fa,Unknown,locally-admin
+172.17.102.177,74:46:a0:c4:f9:3c,Hewlett Packard,
+172.17.102.181,00:0d:e0:81:76:27,Icpdas,
+172.17.102.183,22:21:50:39:2f:94,Unknown,locally-admin
+172.17.102.184,8c:e9:ee:7f:fb:ed,Unknown,
+172.17.102.186,00:0d:e0:81:81:7b,Icpdas,
+172.17.102.187,a0:6f:aa:1d:04:90,LG Innotek,
+172.17.102.189,c6:2d:71:d9:95:40,Unknown,locally-admin
+172.17.102.191,54:ea:e1:1d:f2:d1,Unknown,
+172.17.102.192,fc:34:97:65:f1:ec,Asustek Computer,
+172.17.102.193,2c:58:b9:58:37:b5,Unknown,
+172.17.102.196,7c:4d:8f:9f:2d:c2,Unknown,
+172.17.102.198,20:4e:f6:4e:a3:d5,AzureWave Technology,
+172.17.102.199,a8:a1:59:e7:94:5f,ASRock Incorporation,
+172.17.102.200,f0:23:b9:5d:cd:3f,Ieee Registration Authority,
+172.17.102.202,7c:21:4a:46:ba:86,Unknown,
+172.17.102.205,c0:bf:be:a7:f9:7d,Unknown,
+172.17.102.209,70:15:fb:14:de:3a,Unknown,
+172.17.102.210,40:7a:a4:c6:98:62,Zhejiang Dahua Technology,
+172.17.102.211,34:0a:33:9c:3e:f1,D-Link International,
+172.17.102.218,50:eb:f6:21:ba:4d,Unknown,
+172.17.102.219,48:22:54:6f:79:8c,Unknown,
+172.17.102.228,50:eb:f6:21:ba:5f,Unknown,
+172.17.102.230,3e:78:95:05:c5:ac,Unknown,locally-admin
+172.17.102.232,88:ae:dd:61:9c:2a,EliteGroup Computer Systems,
+172.17.102.239,74:56:3c:3d:3c:85,Unknown,
+172.17.102.248,18:60:24:7f:08:62,Hewlett Packard,
+172.17.102.249,00:d4:9e:28:00:c3,Unknown,

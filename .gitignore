@@ -1,0 +1,37 @@
+# Служебные файлы opencode (не для репозитория)
+.opencode-session/
+.opencode/
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Секреты и окружение
+.env
+.env.*
+*.pem
+*.key
+*.crt
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+
+# Бэкапы
+backup/
+
+# Сырые данные сканирования (gnmap/nmap) — регенерируются
+scan/raw/*.gnmap
+scan/raw/*.nmap
+scan/raw/*.xml
+scan/raw/*.log
+scan/data/up_*.txt
+scan/data/arp_*.txt
+scan/data/all_up.txt
