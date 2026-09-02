@@ -156,6 +156,8 @@ FreePBX раздаёт телефонам конфигурацию через HT
 
 ## Настройка FreePBX (базовая, выполняется)
 
+> Пошаговая инструкция через веб-интерфейс: [reports/freepbx-setup-guide.md](reports/freepbx-setup-guide.md)
+
 ### 1. Обновить настройки SIP (Asterisk)
 
 ```
