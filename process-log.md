@@ -136,6 +136,9 @@
 - Скрипты: `scripts/vault-get.sh`, `scripts/vault-unseal.sh`
 - Документация: `vault.md`
 
+**Проверка PVE API:** токен из Vault работает — Proxmox **9.2.2**, node `mpve-10`,
+API (https://172.17.100.10:8006) отвечает.
+
 > ⚠️ Секреты не попадают в git: `.vault/` и `vault/data/` в .gitignore.
 
 ## Ожидающие задачи
