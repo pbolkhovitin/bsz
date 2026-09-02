@@ -120,6 +120,24 @@
 - Команды RouterOS для включения SNMP/LLDP — подготовлены
 - Задача отложена до получения доступа full
 
+### Этап 12: Vault-хранилище (vault-bsz)
+
+**Цель:** создать локальное хранилище секретов по образцу vault-kg (проект projeckt-kg).
+
+Выполнено:
+- Создан контейнер podman **`vault-bsz`** (hashicorp/vault 2.0.4), порт **8200**
+- Конфиг: `vault/config/vault.hcl` (file backend, vault/data/, ui=true)
+- Инициализация: 1 unseal-шар, threshold 1; ключи в `.vault/unseal.txt` (chmod 600)
+- Secrets engine: **kv-v2** путь `bsz/`
+- Секреты:
+  - `bsz/pve/mpve10` — Proxmox VE (172.17.100.10), токен `root@pam!agent`
+  - `bsz/mikrotik/rb5009` — MikroTik API (bszapi + токен, identity gw.BSZ)
+  - `bsz/snmp` — SNMP community (BSZ-m0n1t0r / BSZ-m4n4g3)
+- Скрипты: `scripts/vault-get.sh`, `scripts/vault-unseal.sh`
+- Документация: `vault.md`
+
+> ⚠️ Секреты не попадают в git: `.vault/` и `vault/data/` в .gitignore.
+
 ## Ожидающие задачи
 
 - [ ] Определить модели D-Link коммутаторов (доступ через консоль)

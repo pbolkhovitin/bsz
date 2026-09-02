@@ -39,6 +39,7 @@
 | `wifi.md` | Wi-Fi: точки доступа |
 | `netbox.md` | Интеграция с NetBox |
 | `zabbix.md` | Мониторинг |
+| `vault.md` | Vault-хранилище секретов (структура `bsz/`) |
 | `process-log.md` | Журнал процесса (все действия) |
 | `scripts/` | Скрипты: сканирование, NetBox-импорт, SNMP-перевод |
 | `data/` | Данные инвентаризации (CSV) |
@@ -47,6 +48,7 @@
 | `reports/` | Отчёты |
 | `reglamenty/` | Регламенты |
 | `backup/` | Бэкапы (gitignored) |
+| `.vault/`, `vault/data/` | Vault-данные (gitignored) |
 
 ## Инфраструктура
 
@@ -81,6 +83,11 @@
 - **API (порт 8728):** логин `bszapi`, группа Api-read-group (**read-only**) — для чтения конфигурации
 - Для изменений (SNMP/LLDP) нужен пользователь группы `full`
 - MAC-telnet: работает, admin/admin отклоняется
+
+### Vault (vault-bsz)
+- Контейнер podman `vault-bsz` (127.0.0.1:8200), unseal/root-токен в `.vault/unseal.txt`
+- Секреты: `bsz/pve/mpve10`, `bsz/mikrotik/rb5009`, `bsz/snmp`
+- Скрипты: `scripts/vault-unseal.sh`, `scripts/vault-get.sh`
 
 ### Методы доступа к коммутаторам (из projeckt-kg)
 

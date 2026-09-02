@@ -3,6 +3,10 @@
 .opencode/
 .claude/
 
+# Vault (ключи unseal, root-токен, данные)
+.vault/
+vault/data/
+
 # Python
 __pycache__/
 *.py[cod]

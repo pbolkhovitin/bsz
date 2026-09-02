@@ -18,6 +18,7 @@
 | [config-recommendations.md](config-recommendations.md) | Настройка SNMP/LLDP |
 | [wifi.md](wifi.md) | Wi-Fi точки доступа |
 | [netbox.md](netbox.md) | Интеграция с NetBox |
+| [vault.md](vault.md) | Vault-хранилище секретов |
 | [process-log.md](process-log.md) | Журнал процесса |
 | `scripts/` | Скрипты: NetBox-импорт, SNMP/LLDP-настройка |
 | `scan/data/` | Данные инвентаризации (CSV) |
