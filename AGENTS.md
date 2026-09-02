@@ -78,6 +78,12 @@
 | MikroTik RB5009 | 172.17.100.1 | DNS, шлюз |
 | Proxmox VE | 172.17.100.10 | SSH, API (3128) |
 | Debian 12 | 172.17.100.11 | SSH |
+| FreePBX 17.0.33 | 172.17.100.251 → **.15** | IP-PBX (Asterisk), веб 80/443, SSH |
+
+### VoIP (проект)
+- Телефоны: **Yealink**, **Grandstream**
+- SIP-транк: **Ростелеком**
+- Межподразделенческие транки: через **GRE-туннели** (gre-B1, gre-RTP1, gre-RTP2 на RB5009)
 
 ### Доступ к MikroTik (RB5009)
 - **API (порт 8728):** логин `bszapi`, группа Api-read-group (**read-only**) — для чтения конфигурации
