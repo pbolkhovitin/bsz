@@ -37,6 +37,7 @@
 | `security.md` | Безопасность: SNMP, открытые сервисы |
 | `config-recommendations.md` | Настройка SNMP/LLDP по моделям |
 | `wifi.md` | Wi-Fi: точки доступа |
+| `voip.md` | IP-телефония: транки (Ростелеком, GRE), автопровижининг |
 | `netbox.md` | Интеграция с NetBox |
 | `zabbix.md` | Мониторинг |
 | `vault.md` | Vault-хранилище секретов (структура `bsz/`) |

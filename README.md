@@ -17,6 +17,7 @@
 | [security.md](security.md) | Безопасность: SNMP, открытые сервисы |
 | [config-recommendations.md](config-recommendations.md) | Настройка SNMP/LLDP |
 | [wifi.md](wifi.md) | Wi-Fi точки доступа |
+| [voip.md](voip.md) | IP-телефония: транки, GRE, автопровижининг |
 | [netbox.md](netbox.md) | Интеграция с NetBox |
 | [vault.md](vault.md) | Vault-хранилище секретов |
 | [process-log.md](process-log.md) | Журнал процесса |
