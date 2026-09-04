@@ -292,10 +292,24 @@ API-токена `agent` — токен получил полные права (
 - Сервис `zabbix-proxy` активен, слушает **10051/tcp**
 
 **Замечания:**
-- `Server` (адрес Zabbix Server) пока временный — сервер будет развёрнут позже, прокси
-  переподключается каждую секунду (это ожидаемо, пока сервера нет)
 - API-токен PVE не имеет прав на `exec` — для входа использован SSH-ключ
 - `ssh-public-keys` и `password` допустимы только при создании контейнера (не через PUT config)
+
+### Этап 22: Zabbix Proxy — подключение к серверу (по методике projeckt-kg)
+
+**Решение пользователя:** настройка подключения к серверу и прокси — аналогично
+projeckt-kg (общий Zabbix Server `zbx.ais.local`).
+
+**Выполнено:**
+- Zabbix Server — общий: **zbx.ais.local (172.17.231.25)**, версия 7.0.26, доступен из сети BSZ
+- Токен Zabbix API получен из Vault projeckt-kg (`kg/zabbix`, контейнер `vault-kg`, порт 8202)
+- `Server=172.17.231.25` в `/etc/zabbix/zabbix_proxy.conf` (было 172.17.100.10)
+- Прокси перезапущен — в логе `proxy "zabbix-proxy" not found` (ожидаемо, не зарегистрирован)
+- **Прокси зарегистрирован** в Zabbix через API `proxy.create` (id=2, active mode, name=`zabbix-proxy`)
+- Проверено: `received configuration data from server at "172.17.231.25", datalen 5476`,
+  `lastaccess` обновляется, порт 10051 слушается
+
+**Результат:** прокси подключён к общему Zabbix Server, готов принимать SNMP-опрос устройств BSZ.
 
 ## Ожидающие задачи
 
