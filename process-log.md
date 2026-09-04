@@ -276,6 +276,27 @@ API-токена `agent` — токен получил полные права (
 - Документация: `voip.md`, `reports/freepbx-setup-guide.md`
 - Секреты: Vault `bsz/freepbx/admin`
 
+### Этап 21: Развёртывание Zabbix Proxy на PVE (LXC 102)
+
+**Цель:** развернуть Zabbix Proxy для будущего мониторинга сети BSZ.
+
+**Выполнено:**
+- PVE API (172.17.100.10:8006, токен `bsz/pve/mpve10` из Vault) проверен — Proxmox 9.2.2, node `mpve-10`
+- Создан LXC-контейнер **102** `zabbix-proxy` из шаблона `debian-12-standard_12.12-1_amd64.tar.zst`
+- Параметры: 1 core, 512 MB RAM, 8 GB rootfs (local-lvm), unprivileged, onboot
+- Сеть: **172.17.100.20/24**, шлюз 172.17.100.1, DNS 172.17.102.1, `vmbr0`
+- Доступ: SSH по ключу `id_ed25519_pve` (внедрён через `ssh-public-keys` при создании)
+- Установлен **Zabbix Proxy 7.0.30** (пакет `zabbix-proxy-sqlite3`, официальный репозиторий Zabbix 7.0)
+- БД: SQLite `/var/lib/zabbix/zabbix_proxy.sqlite3` (создана автоматически)
+- Конфиг `/etc/zabbix/zabbix_proxy.conf`: `Server=172.17.100.10` (временно), `Hostname=zabbix-proxy`
+- Сервис `zabbix-proxy` активен, слушает **10051/tcp**
+
+**Замечания:**
+- `Server` (адрес Zabbix Server) пока временный — сервер будет развёрнут позже, прокси
+  переподключается каждую секунду (это ожидаемо, пока сервера нет)
+- API-токен PVE не имеет прав на `exec` — для входа использован SSH-ключ
+- `ssh-public-keys` и `password` допустимы только при создании контейнера (не через PUT config)
+
 ## Ожидающие задачи
 
 - [ ] Определить модели D-Link коммутаторов (доступ через консоль)
