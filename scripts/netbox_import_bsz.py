@@ -42,26 +42,53 @@ print(f"Режим: {'DRY-RUN (ничего не создаётся)' if DRY_RUN
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# --- Справочник ключевых устройств (сетевые, серверы, принтеры) ---
-# Из инвентаря 172.17.102.0/24 + 172.17.100.0/24
+# --- Справочник ключевых устройств (сетевые, серверы) ---
+# Из inventory-switches.md / inventory.md (2026-09-07)
+# Коммутаторы на DHCP (172.17.103.x) — идентификация по MAC; IP может меняться.
 DEVICES = {
     # (name, ip, mac, vendor, device_type, role)
-    "rb5009":         {"ip": "172.17.102.1",  "mac": "04:F4:1C:65:27:EE", "vendor": "MikroTik", "model": "RB5009", "role": "gateway", "subnet": "lan"},
-    "crs328":         {"ip": None,             "mac": "04:F4:1C:AC:8E:21", "vendor": "MikroTik", "model": "CRS328-4C-20S-4S+", "role": "switch", "subnet": None},
-    "dlink-211":      {"ip": "172.17.102.211", "mac": "34:0A:33:9C:3E:F1", "vendor": "D-Link", "model": "D-Link Switch", "role": "switch", "subnet": "lan"},
+    "gw.BSZ":         {"ip": "172.17.102.1",  "mac": "04:F4:1C:65:27:EE", "vendor": "MikroTik", "model": "RB5009", "role": "gateway", "subnet": "lan"},
+    "sw-Mikrot":      {"ip": "172.17.103.65", "mac": "04:F4:1C:AC:8E:35", "vendor": "MikroTik", "model": "CRS328-4C-20S-4S+", "role": "switch", "subnet": "switchpool"},
+    "DGS-3000":       {"ip": "172.17.102.175", "mac": "88:76:B9:63:68:40", "vendor": "D-Link", "model": "DGS-3000-28XS", "role": "switch", "subnet": "lan"},
+    "sw-02":          {"ip": "172.17.102.142", "mac": "0C:0E:76:78:63:E0", "vendor": "D-Link", "model": "DGS-1210-12TS", "role": "switch", "subnet": "lan"},
+    "sw-03":          {"ip": "172.17.102.145", "mac": "78:98:E8:E4:C7:90", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "lan"},
+    "sw-04":          {"ip": "172.17.102.139", "mac": "64:29:43:D5:C3:E0", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "lan"},
+    "sw-05":          {"ip": "172.17.103.52", "mac": "DC:EA:E7:FE:3F:80", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "switchpool"},
+    "sw-06":          {"ip": "172.17.102.141", "mac": "90:8D:78:A6:D1:74", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "lan"},
+    "sw-07":          {"ip": "172.17.102.206", "mac": "6C:72:20:C1:9D:32", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "lan"},
+    "sw-08":          {"ip": "172.17.103.53", "mac": "A0:A3:F0:B5:B8:80", "vendor": "D-Link", "model": "DES-1210-52", "role": "switch", "subnet": "switchpool"},
+    "sw-09":          {"ip": "172.17.103.54", "mac": "78:98:E8:E4:C9:50", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "switchpool"},
+    "sw-10":          {"ip": "172.17.103.58", "mac": "D0:32:C3:B9:3C:50", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "switchpool"},
+    "sw-11":          {"ip": "172.17.103.57", "mac": "D0:32:C3:B9:3E:30", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "switchpool"},
+    "sw-12":          {"ip": "172.17.103.56", "mac": "DC:EA:E7:FE:3F:A0", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "switchpool"},
+    "sw-13":          {"ip": "172.17.103.60", "mac": "88:76:B9:CC:7D:C0", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "switchpool"},
+    "sw-14":          {"ip": "172.17.103.61", "mac": "D0:32:C3:B9:3D:F0", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "switchpool"},
+    "sw-15":          {"ip": "172.17.103.62", "mac": "D0:32:C3:B9:45:90", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "switchpool"},
+    "sw-16":          {"ip": "172.17.103.63", "mac": "A4:2A:95:FC:04:60", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "switchpool"},
+    "sw-17":          {"ip": "172.17.103.64", "mac": "00:AD:24:03:CF:24", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "switchpool"},
     "proxmox-100":    {"ip": "172.17.100.10",  "mac": None,                 "vendor": "Proxmox", "model": "Proxmox VE", "role": "server", "subnet": "servers"},
     "debian-100":     {"ip": "172.17.100.11",  "mac": None,                 "vendor": "Debian", "model": "Linux Server", "role": "server", "subnet": "servers"},
-    "tplink-21":      {"ip": "172.17.102.21",  "mac": "B0:A7:B9:E7:17:3F", "vendor": "TP-Link", "model": "TP-Link Router/AP", "role": "ap", "subnet": "lan"},
-    "keenetic-40":    {"ip": "172.17.102.40",  "mac": "50:FF:20:DB:79:FA", "vendor": "Keenetic", "model": "Keenetic Router", "role": "ap", "subnet": "lan"},
-    "asus-192":       {"ip": "172.17.102.192", "mac": "FC:34:97:65:F1:EC", "vendor": "Asus", "model": "Asus Router/AP", "role": "ap", "subnet": "lan"},
+    "freepbx-100":    {"ip": "172.17.100.15",  "mac": None,                 "vendor": "Debian", "model": "Linux Server", "role": "server", "subnet": "servers"},
+    "zabbix-proxy-100":{"ip": "172.17.100.20", "mac": None,                 "vendor": "Debian", "model": "Linux Server", "role": "server", "subnet": "servers"},
 }
 
-# Подсети
+# TP-Link JetStream (22 шт) — управление web/Omada, MAC не собраны; добавить по IP-диапазону
+TP_LINK_JETSTREAM = ["172.17.102.20", "172.17.102.21", "172.17.102.22", "172.17.102.23",
+                     "172.17.102.24", "172.17.102.25", "172.17.102.26", "172.17.102.27",
+                     "172.17.102.28", "172.17.102.30", "172.17.102.31", "172.17.102.201",
+                     "172.17.102.204", "172.17.102.207", "172.17.102.209",
+                     "172.17.103.25", "172.17.103.35", "172.17.103.36", "172.17.103.37",
+                     "172.17.103.38", "172.17.103.39", "172.17.103.41", "172.17.103.42",
+                     "172.17.103.43", "172.17.103.45", "172.17.103.47", "172.17.103.48",
+                     "172.17.103.50", "172.17.103.51"]
+
+# Подсети (целевая схема 2026-09-07)
 SUBNETS = {
-    "servers":  {"prefix": "172.17.100.0/24", "name": "Серверы"},
-    "reserve":  {"prefix": "172.17.101.0/24", "name": "Резерв"},
-    "lan":      {"prefix": "172.17.102.0/24", "name": "Локальная сеть"},
-    "security": {"prefix": "172.17.106.0/24", "name": "Безопасность"},
+    "servers":     {"prefix": "172.17.100.0/24", "name": "Серверы"},
+    "mgmt":        {"prefix": "172.17.101.0/24", "name": "Управление коммутаторами (статический)"},
+    "lan":         {"prefix": "172.17.102.0/23", "name": "Локальная сеть"},
+    "switchpool":  {"prefix": "172.17.103.0/24", "name": "DHCP-пул коммутаторов (временно)"},
+    "security":    {"prefix": "172.17.106.0/23", "name": "Камеры/безопасность"},
 }
 
 ROLES = {
@@ -76,16 +103,18 @@ ROLES = {
 
 VENDOR_MODELS = {
     "MikroTik": ["RB5009", "CRS328-4C-20S-4S+"],
-    "D-Link": ["D-Link Switch"],
-    "TP-Link": ["TP-Link Router/AP"],
+    "D-Link": ["DGS-3000-28XS", "DGS-1210-20", "DGS-1210-10", "DGS-1210-12TS", "DES-1210-52"],
+    "TP-Link": ["JetStream Switch"],
     "Keenetic": ["Keenetic Router"],
     "Asus": ["Asus Router/AP"],
     "Proxmox": ["Proxmox VE"],
     "Debian": ["Linux Server"],
     "Dahua": ["IP Camera"],
+    "Hikvision": ["IP Camera"],
     "HP": ["Printer"],
     "Brother": ["Printer"],
     "Seiko Epson": ["Printer"],
+    "Canon": ["Printer"],
     "Grandstream": ["VoIP Phone"],
     "ICPDAS": ["Industrial Controller"],
     "EliteGroup": ["Workstation"],
@@ -206,6 +235,24 @@ def main():
                     address=d["ip"], assigned_object_type="dcim.interface",
                     assigned_object_id=iface.id, status="active")
                 print(f"  [создан] IP {d['ip']} -> {name}")
+
+    # --- TP-Link JetStream (массово, по IP-диапазону) ---
+    js_type = dev_types.get("JetStream Switch")
+    js_role = role_objs.get("switch")
+    for tip in TP_LINK_JETSTREAM:
+        tname = f"tplink-{tip.split('.')[-1]}"
+        dev = resolve(nb.dcim.devices, name=tname)
+        if not dev:
+            if not DRY_RUN:
+                dev = nb.dcim.devices.create(
+                    name=tname,
+                    device_type=js_type.id if js_type else None,
+                    role=js_role.id if js_role else None,
+                    site=site.id, status="active",
+                )
+                print(f"  [создано] устройство '{tname}'")
+            else:
+                print(f"  [dry] создал бы устройство '{tname}'")
 
     # --- Массовый импорт из ARP-инвентаря (принтеры/камеры/рабочие станции) ---
     if not DRY_RUN:
