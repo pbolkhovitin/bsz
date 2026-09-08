@@ -38,4 +38,6 @@ scan/raw/*.xml
 scan/raw/*.log
 scan/data/up_*.txt
 scan/data/arp_*.txt
-scan/data/all_up.txt
+scan/data/all_up.txt# LLDP-слепки (regeneratable)
+data/lldp/
+data/scan_history.md
