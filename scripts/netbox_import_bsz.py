@@ -188,14 +188,29 @@ def load_arp_inventory():
 def main():
     site = None
     # --- Сайт ---
-    site = resolve(nb.dcim.sites, slug="set-bsz")
+    site = resolve(nb.dcim.sites, slug="bsz")
     if not site:
         if not DRY_RUN:
-            site = nb.dcim.sites.create(name="Сеть BSZ (172.17.0.0/16)",
-                                        slug="set-bsz")
+            site = nb.dcim.sites.create(name="BSZ",
+                                        slug="bsz")
             print("  [создано] сайт 'Сеть BSZ'")
         else:
             print("  [dry] создал бы сайт")
+
+    # --- Локации (будут уточнены при идентификации по размещению) ---
+    LOCATIONS = [
+        {"name": "Серверная", "slug": "servernaya", "desc": "ядро: CRS328, DGS-3000, серверы"},
+    ]
+    loc_objs = {}
+    for l in LOCATIONS:
+        lo = resolve(nb.dcim.locations, slug=l["slug"])
+        if not lo and not DRY_RUN:
+            lo = nb.dcim.locations.create(name=l["name"], slug=l["slug"], description=l["desc"])
+            print(f"  [создано] локация '{l['name']}'")
+        loc_objs[l["slug"]] = lo
+
+    # Привязка устройств к локациям (ядро -> Серверная)
+    LOC_DEV = {"bsz-sw-01": "servernaya", "bsz-sw-02": "servernaya", "gw.BSZ": "servernaya"}
 
     # --- Роли ---
     role_objs = {}
@@ -246,7 +261,9 @@ def main():
                     name=name,
                     device_type=dev_types[d["model"]].id if dev_types.get(d["model"]) else None,
                     role=role_objs[d["role"]].id if role_objs.get(d["role"]) else None,
-                    site=site.id, status="active",
+                    site=site.id,
+                    location=loc_objs[LOC_DEV[name]].id if name in LOC_DEV and LOC_DEV[name] in loc_objs else None,
+                    status="active",
                 )
                 print(f"  [создано] устройство '{name}'")
             else:
