@@ -368,3 +368,12 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Перевод на MNG-сеть — **вручную** (по одному, с сохранением доступа)
 - Связанность по LLDP подтверждена (ядро ← DGS-3000, CRS328; камеры на bsz-sw-05)
 - План в `inventory-switches.md` (раздел 8)
+
+### Этап 25: Методика безопасного telnet-доступа (vault-bsz)
+
+- Разработана методика в `security.md`: смена дефолтных паролей, уникальные креды,
+  хранение в vault-bsz (`bsz/switches/<name>`), ограничение telnet/http через firewall
+  MikroTik (только 172.17.101.0/24), порядок внедрения, аудит.
+- Добавлен helper `scripts/vault-set.sh` — запись/обновление секретов в vault-bsz (kv-v2, merge).
+- Команды смены пароля: D-Link ME/F1 — `config account admin password <new>` + `save`;
+  MikroTik — `/user set` + `/ip service`.
