@@ -377,3 +377,12 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Добавлен helper `scripts/vault-set.sh` — запись/обновление секретов в vault-bsz (kv-v2, merge).
 - Команды смены пароля: D-Link ME/F1 — `config account admin password <new>` + `save`;
   MikroTik — `/user set` + `/ip service`.
+
+### Этап 26: Миграция в MNG — статус (2026-09-08)
+
+- **Ядро = CRS328 (bsz-sw-01, 172.17.101.10)**, DGS-3000 = bsz-sw-02 (172.17.101.11)
+- **Переведено в MNG (15 шт):** bsz-sw-01, 02, 04, 05, 08, 11, 12, 13, 15, 16, 17, 19, 20, 21(?), 22
+- **Ещё на DHCP:** bsz-sw-09 (.102.102), bsz-sw-06 (.103.151), bsz-sw-14 (.103.60), bsz-sw-23 (.102.101), новый .103.90
+- **Не найдены:** bsz-sw-03, 07, 10, 18
+- RB5009 отвечает .1 в 100/101/102; 172.17.106.1 не создан (камеры)
+- Топология/таблица сохранены в inventory-switches.md, topology.md
