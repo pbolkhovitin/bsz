@@ -394,3 +394,12 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - На DHCP: bsz-sw-03 (.133, имя sw-04), bsz-sw-18 (.64, имя sw-17), bsz-sw-23 (.101), новый .90
 - bsz-sw-09 (A0:A3:F0) — офлайн; bsz-sw-07/10 — не найдены
 - Таблица обновлена в inventory-switches.md (раздел 8)
+
+### Этап 28: Подготовка данных для NetBox (2026-09-08)
+
+- Обновлён `scripts/netbox_import_bsz.py`: DEVICES (28 × bsz-sw-XX с MNG IP + MAC,
+  gw.BSZ, 4 сервера), TP-Link JetStream (22), CABLES (LLDP-топология, 15 линков)
+- Сухой прогон: NetBox 4.5, 62 устройства (28 bsz-sw + gw + 4 сервера + TP-Link)
+- ⚠️ Инцидент: при записи URL в `bsz/netbox` использовался POST (замена) — токен потерян.
+  Восстановлен из истории сессии (m0j6F2GZ…), запись полная (url/token/username).
+  Для merge-записи использовать `scripts/vault-set.sh` (не curl POST).
