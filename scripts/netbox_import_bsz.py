@@ -187,12 +187,22 @@ def load_arp_inventory():
 
 def main():
     site = None
+    # --- Регион ---
+    region = resolve(nb.dcim.regions, slug="borino")
+    if not region:
+        if not DRY_RUN:
+            region = nb.dcim.regions.create(name="Borino", slug="borino")
+            print("  [создан] регион 'Borino'")
+        else:
+            print("  [dry] создал бы регион 'Borino'")
+
     # --- Сайт ---
     site = resolve(nb.dcim.sites, slug="bsz")
     if not site:
         if not DRY_RUN:
             site = nb.dcim.sites.create(name="BSZ",
-                                        slug="bsz")
+                                        slug="bsz",
+                                        region=region.id if region else None)
             print("  [создано] сайт 'Сеть BSZ'")
         else:
             print("  [dry] создал бы сайт")
