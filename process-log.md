@@ -403,3 +403,10 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - ⚠️ Инцидент: при записи URL в `bsz/netbox` использовался POST (замена) — токен потерян.
   Восстановлен из истории сессии (m0j6F2GZ…), запись полная (url/token/username).
   Для merge-записи использовать `scripts/vault-set.sh` (не curl POST).
+
+### Этап 29: Механизм обновления NetBox через агента + план скрипта на Zabbix Proxy
+
+- `netbox.md`: раздел «Механизм обновления NetBox через агента» (источники, триггеры,
+  процедуры, правила) + раздел 6 «Будущий скрипт на Zabbix Proxy» (по аналогии projeckt-kg:
+  scan_network_bsz.py, netbox_update_topo_bsz.py на 172.17.100.20)
+- Добавлен `scripts/netbox_sync_bsz.sh` (dry-run/импорт, токен из Vault)

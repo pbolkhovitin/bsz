@@ -68,3 +68,90 @@ python3 scripts/netbox_import_bsz.py                     # импорт
 - [ ] Добавить IP/подсети (172.17.100/101/102/103/106)
 - [ ] Кабели по LLDP (из `topology.md`)
 - [ ] Привязать камеры к коммутаторам (FDB, `topology.md`)
+---
+
+## Механизм обновления NetBox через агента
+
+> Цель: поддерживать NetBox в актуальном состоянии при изменениях в сети
+> (миграции, новые устройства, смена настроек) через агента (opencode).
+
+### 1. Источники данных
+
+| Источник | Что даёт | Метод |
+|----------|----------|-------|
+| SNMP (BSZ-m0n1t0r) | модели (sysDescr), LLDP-топология, FDB (кто на каком порту) | `snmpwalk` |
+| ARP/пинг-скан | IP→MAC инвентарь (новые/пропавшие устройства) | `nmap -sn` |
+| MikroTik API (bszapi, ro) | DHCP-лизы, ARP, интерфейсы | RouterOS API |
+| Телnet к коммутаторам | имена (bsz-sw-XX), IP, STP/NTP статус | telnet |
+
+### 2. Триггеры обновления
+
+| Событие | Действие агента |
+|---------|-----------------|
+| Скан сети (по запросу) | обновить `inventory.md`, `inventory-switches.md` |
+| Переименование/переезд коммутатора | обновить DEVICES в скрипте → импорт |
+| Новое устройство обнаружено | добавить в DEVICES/инвентарь → импорт |
+| Смена IP (DHCP→MNG) | обновить `ip` в DEVICES → импорт обновит IP-адрес |
+| Топология изменилась (LLDP) | пересобрать CABLES → импорт обновит кабели |
+| Массовые устройства (камеры/ПК) | из ARP-скана по MAC (по известным вендорам) |
+
+### 3. Скрипты
+
+- **`scripts/netbox_import_bsz.py`** — идемпотентный импорт:
+  устройства (resolve по имени), интерфейсы+MAC, IP-адреса, подсети, кабели (LLDP).
+- **`scripts/netbox_sync_bsz.sh`** — обёртка: токен из Vault + запуск import.
+
+### 4. Процедуры
+
+**Обновление после скана:**
+```bash
+# 1) скан → собрать MAC/IP (nmap -sn), LLDP, FDB
+# 2) обновить inventory.md / inventory-switches.md (таблица раздела 8)
+# 3) обновить DEVICES/CABLES в netbox_import_bsz.py при изменениях
+# 4) запустить сухой прогон, затем импорт
+bash scripts/netbox_sync_bsz.sh --dry-run
+bash scripts/netbox_sync_bsz.sh
+```
+
+**Новый коммутатор:** добавить в `DEVICES` (name/ip/mac/model) + в `CABLES` (аплинк по LLDP) → импорт создаст устройство, интерфейс, IP, кабель.
+
+**Смена IP на статик (MNG):** обновить `ip` у записи → импорт обновит IP-адрес (по имени устройства).
+
+**Кабели:** после `snmpwalk lldpRemTable` по коммутаторам — перегенерировать `CABLES` → импорт.
+
+### 5. Правила
+
+1. **Идемпотентность**: resolve по имени/MAC — повторный запуск не создаёт дубли.
+2. **Токен из Vault** (`bsz/netbox`), НЕ хранить в коде/файлах.
+3. **Секреты** — только в Vault (vault-bsz), в репо — ссылки.
+4. После каждого изменения — запись в `process-log.md` и коммит в `master`.
+5. MAC — устойчивый идентификатор (IP на DHCP меняется до перевода в MNG).
+
+### 6. Будущий скрипт на Zabbix Proxy (по аналогии с projeckt-kg)
+
+> План: автоматический сбор данных и синхронизация NetBox/Zabbix скриптом,
+> размещённым на **Zabbix Proxy (172.17.100.20, LXC 102 на PVE mpve-10)**,
+> аналогично `projeckt-kg/scripts` (`scan_network.py`, `netbox_update_topo.py`).
+
+**Что будет:**
+- Скрипт (`scan_network_bsz.py` + `netbox_update_topo_bsz.py`) на Zabbix Proxy
+- Периодический запуск (cron/systemd timer):
+  1. ARP/пинг-скан подсетей 172.17.x → инвентарь (IP/MAC)
+  2. SNMP-опрос коммутаторов (BSZ-m0n1t0r): LLDP-топология, FDB, sysDescr
+  3. Обновление NetBox (устройства, IP, кабели) — идемпотентно
+  4. Обновление Zabbix (хосты, IP, привязка к прокси)
+- Токен NetBox — из Vault `bsz/netbox` (на прокси — чтение из vault-bsz или env)
+
+**Прообраз (projeckt-kg):**
+| projeckt-kg | BSZ (план) |
+|-------------|------------|
+| `scan_network.py` | `scan_network_bsz.py` |
+| `netbox_update_topo.py` | `netbox_update_topo_bsz.py` |
+| `deploy_scan_to_proxy.sh` | аналогичный деплой на 172.17.100.20 |
+| Zabbix API токен | `bsz/zabbix` (создать в Vault) |
+
+**Задачи:**
+- [ ] Подготовить `scan_network_bsz.py` (по образцу projeckt-kg)
+- [ ] Развернуть на Zabbix Proxy (172.17.100.20)
+- [ ] Cron/timer: ежедневный скан + обновление NetBox
+- [ ] Создать в Vault `bsz/zabbix` (url, token)
