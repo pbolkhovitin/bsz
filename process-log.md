@@ -453,3 +453,12 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Добавлен авто-unseal в `scripts/vault-get.sh` и `vault-set.sh`
 - Баг: `/sys/health` при sealed возвращает 503, `curl -f` падал → unseal не срабатывал. Убран `-f`.
 - Проверено: seal → vault-get сам распечатывает и возвращает токен ✅
+
+### Этап 36: Замена bsz-sw-09 (2026-09-09)
+
+- **Старый**: DES-1210-52 (A0:A3:F0:B5:B8:80)
+- **Новый**: **DGS-1210-52/ME/B1** (A0:A3:F0:BC:A8:F0), sysName "bsz-sw-9", IP 172.17.101.18, аплинк → bsz-sw-04
+- Обновлены: inventory-switches.md, inventory.md, topology.md
+- NetBox: тип устройства обновлён на DGS-1210-52/ME/B1, создан тип
+- Zabbix: хост bsz-sw-09 (IP тот же) — продолжает опрашиваться по SNMP
+- Vault-bsz: контейнер был остановлен — перезапущен, авто-unseal работает
