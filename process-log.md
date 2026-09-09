@@ -462,3 +462,13 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - NetBox: тип устройства обновлён на DGS-1210-52/ME/B1, создан тип
 - Zabbix: хост bsz-sw-09 (IP тот же) — продолжает опрашиваться по SNMP
 - Vault-bsz: контейнер был остановлен — перезапущен, авто-unseal работает
+
+### Этап 37: LLDP с RB5009 + bsz-sw-09 связанность (2026-09-09)
+
+- **RB5009 (gw.BSZ)**: SNMP теперь включён (BSZ-m0n1t0r), RouterOS 7.23.5, LLDP активен
+  - LLDP-сосед: **порт 7 → bsz-sw-03** (sw-04), chassis 04:F4:1C:65:27:E9
+- **bsz-sw-09 (DGS-1210-52/ME/B1)** связанность (LLDP):
+  - аплинк порт **46 → bsz-sw-04**, порт 48 → **TRASSIR-BOR1** (видеонаблюдение),
+    порт 47 → D-Link .41.202, порт 1 → Windows .41.250, порт 3 → EliteGroup .41.199, порт 23 → Gigabyte .40.22
+- NetBox: кабель gw.BSZ↔bsz-sw-03 присутствует; скрипт импорта обновлён (bsz-sw-09 модель/MAC, кабель 46)
+- Доки: topology.md, inventory-switches.md обновлены

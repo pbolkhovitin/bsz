@@ -57,7 +57,7 @@ DEVICES = {
     "bsz-sw-06": {"ip": "172.17.101.15", "mac": "78:98:E8:E4:C7:90", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "mgmt"},
     "bsz-sw-07": {"ip": "172.17.101.16", "mac": "90:8D:78:A6:D1:74", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "mgmt"},
     "bsz-sw-08": {"ip": "172.17.101.17", "mac": "DC:EA:E7:FE:3F:80", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "mgmt"},
-    "bsz-sw-09": {"ip": "172.17.101.18", "mac": "A0:A3:F0:B5:B8:80", "vendor": "D-Link", "model": "DES-1210-52", "role": "switch", "subnet": "mgmt"},
+    "bsz-sw-09": {"ip": "172.17.101.18", "mac": "A0:A3:F0:BC:A8:F0", "vendor": "D-Link", "model": "DGS-1210-52/ME/B1", "role": "switch", "subnet": "mgmt"},
     "bsz-sw-10": {"ip": "172.17.101.19", "mac": "78:98:E8:E4:C9:50", "vendor": "D-Link", "model": "DGS-1210-20", "role": "switch", "subnet": "mgmt"},
     "bsz-sw-11": {"ip": "172.17.101.20", "mac": "D0:32:C3:B9:3C:50", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "mgmt"},
     "bsz-sw-12": {"ip": "172.17.101.21", "mac": "D0:32:C3:B9:3E:30", "vendor": "D-Link", "model": "DGS-1210-10", "role": "switch", "subnet": "mgmt"},
@@ -100,7 +100,7 @@ CABLES = [
     ("bsz-sw-01", "10", "bsz-sw-14", "9"),
     ("bsz-sw-01", "12", "bsz-sw-16", "9"),
     ("bsz-sw-01", "13", "bsz-sw-22", "9"),
-    ("bsz-sw-04", "11", "bsz-sw-09", "52"),
+    ("bsz-sw-04", "11", "bsz-sw-09", "46"),
 ]
 
 # TP-Link JetStream (22 шт) — управление web/Omada, MAC не собраны; добавить по IP-диапазону
