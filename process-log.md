@@ -472,3 +472,10 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
     порт 47 → D-Link .41.202, порт 1 → Windows .41.250, порт 3 → EliteGroup .41.199, порт 23 → Gigabyte .40.22
 - NetBox: кабель gw.BSZ↔bsz-sw-03 присутствует; скрипт импорта обновлён (bsz-sw-09 модель/MAC, кабель 46)
 - Доки: topology.md, inventory-switches.md обновлены
+
+### Этап 38: Полный анализ сети (2026-09-09)
+
+- Отчёт: reports/network-analysis-2026-09-09.md
+- Найдено: MAC 3e:78:95:05:c5:ac на 7 IP (конфликт); STP self-root на bsz-sw-04/05/09;
+  uplink шлюза (bsz-sw-03) на DHCP; TRASSIR/Windows-серверы не в NetBox
+- Рекомендации: перевести bsz-sw-03 на 101.12, исправить STP, разобраться с конфликтным MAC
