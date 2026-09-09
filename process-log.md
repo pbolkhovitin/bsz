@@ -427,3 +427,9 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
   a2i ×3, EliteGroup ×4, JRC Tokki, Lianrui CPE, **bsz-sw-26** (D-Link .41.250), прочие
 - Камеры Dahua/Hikvision сейчас не отвечают (были ранее)
 - Зафиксировано в inventory.md
+
+### Этап 32: Повторный скан 192.168.41 (2026-09-09)
+
+- 19-31 хостов (динамично): EliteGroup ×4, Cisco-Linksys ×3, a2i, Motion Control (вкл. по режиму),
+  Lianrui CPE, bsz-sw-26 (D-Link .250), прочие
+- Часть Motion Control отключена на момент скана — производственное оборудование работает по графику
