@@ -209,35 +209,46 @@ def main():
 
     # --- Локации (будут уточнены при идентификации по размещению) ---
     LOCATIONS = [
-        {"name": "Серверная", "slug": "servernaya", "desc": "ядро: CRS328, DGS-3000, серверы"},
+        {"name": "Серверная BSZ", "slug": "servernaya-bsz", "desc": "ядро BSZ: CRS328, DGS-3000, серверы"},
     ]
     loc_objs = {}
     for l in LOCATIONS:
         lo = resolve(nb.dcim.locations, slug=l["slug"])
         if not lo and not DRY_RUN:
-            lo = nb.dcim.locations.create(name=l["name"], slug=l["slug"], description=l["desc"])
+            lo = nb.dcim.locations.create(name=l["name"], slug=l["slug"],
+                                          site=site.id if site else None, description=l["desc"])
             print(f"  [создано] локация '{l['name']}'")
         loc_objs[l["slug"]] = lo
 
-    # Привязка устройств к локациям (ядро -> Серверная)
-    LOC_DEV = {"bsz-sw-01": "servernaya", "bsz-sw-02": "servernaya", "gw.BSZ": "servernaya"}
+    # Привязка устройств к локациям (ядро -> Серверная BSZ)
+    LOC_DEV = {"bsz-sw-01": "servernaya-bsz", "bsz-sw-02": "servernaya-bsz", "gw.BSZ": "servernaya-bsz"}
 
     # --- Роли ---
     role_objs = {}
     for slug, cfg in ROLES.items():
         r = resolve(nb.dcim.device_roles, slug=slug)
+        if not r:
+            r = resolve(nb.dcim.device_roles, name=cfg["name"])  # общие с projeckt-kg
         if not r and not DRY_RUN:
-            r = nb.dcim.device_roles.create(name=cfg["name"], slug=slug,
-                                            color=cfg["color"])
-            print(f"  [создано] роль '{cfg['name']}'")
+            try:
+                r = nb.dcim.device_roles.create(name=cfg["name"], slug=slug,
+                                                color=cfg["color"])
+                print(f"  [создано] роль '{cfg['name']}'")
+            except Exception as e:
+                r = resolve(nb.dcim.device_roles, name=cfg["name"])
         role_objs[slug] = r
 
     # --- Производители ---
     for mfr in VENDOR_MODELS:
         m = resolve(nb.dcim.manufacturers, slug=mfr.lower())
+        if not m:
+            m = resolve(nb.dcim.manufacturers, name=mfr)
         if not m and not DRY_RUN:
-            m = nb.dcim.manufacturers.create(name=mfr, slug=mfr.lower())
-            print(f"  [создано] производитель '{mfr}'")
+            try:
+                m = nb.dcim.manufacturers.create(name=mfr, slug=mfr.lower())
+                print(f"  [создано] производитель '{mfr}'")
+            except Exception:
+                m = resolve(nb.dcim.manufacturers, name=mfr)
 
     # --- Типы устройств ---
     dev_types = {}
@@ -245,9 +256,12 @@ def main():
         for model in models:
             dt = resolve(nb.dcim.device_types, model=model)
             if not dt and not DRY_RUN:
-                dt = nb.dcim.device_types.create(
-                    manufacturer={"name": mfr}, model=model, slug=slugify(model))
-                print(f"  [создано] тип '{model}'")
+                try:
+                    dt = nb.dcim.device_types.create(
+                        manufacturer=m.id if m else {"name": mfr}, model=model, slug=slugify(model))
+                    print(f"  [создано] тип '{model}'")
+                except Exception:
+                    dt = resolve(nb.dcim.device_types, model=model)
             dev_types[model] = dt
 
     # --- Подсети (IPAM) ---
@@ -307,14 +321,14 @@ def main():
             b_if = resolve(nb.dcim.interfaces, device_id=b_dev.id, name=f"Eth{b_port}")
             if not b_if:
                 b_if = nb.dcim.interfaces.create(device=b_dev.id, name=f"Eth{b_port}", type="1000base-t")
-            # избежать дублей
-            exists = nb.dcim.cables.get(a_terminations__contains=[{"object_type": "dcim.interface", "object_id": a_if.id}])
-            if not exists:
+            try:
                 nb.dcim.cables.create(
                     a_terminations=[{"object_type": "dcim.interface", "object_id": a_if.id}],
                     b_terminations=[{"object_type": "dcim.interface", "object_id": b_if.id}],
                     status="connected")
                 print(f"  [кабель] {a_name}:{a_port} <-> {b_name}:{b_port}")
+            except Exception as e:
+                print(f"  [кабель-skip] {a_name}:{a_port}-{b_name}:{b_port}: {e}")
 
     # --- TP-Link JetStream (массово, по IP-диапазону) ---
     js_type = dev_types.get("JetStream Switch")

@@ -23,6 +23,10 @@
 | `bsz/pve/mpve10` | Proxmox VE (172.17.100.10): url, user (root@pam), token_id (agent), token |
 | `bsz/mikrotik/rb5009` | MikroTik RB5009 API: api_url, user (bszapi), token, identity (gw.BSZ), model |
 | `bsz/snmp` | SNMP community: ro_community (BSZ-m0n1t0r), rw_community (BSZ-m4n4g3) |
+| `bsz/netbox` | NetBox API: url, token, username (bolkhovitin_p) |
+| `bsz/zabbix` | Zabbix API: url, token, user (pbolkhovitin_p) |
+| `bsz/switches/<name>` | креды коммутаторов bsz-sw-XX: login, password, ip, mac |
+| `bsz/pve/mpve10` | Proxmox: url, user (root@pam), token_id (agent), token, **password** |
 
 ## Управление
 
