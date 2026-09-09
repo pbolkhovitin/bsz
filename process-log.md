@@ -441,3 +441,9 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - **192.168.41.202** (A0:A3:F0:D2:20:53): офлайн, тип неподтверждён
 - Обновлены inventory-switches.md / inventory.md
 - TODO: поправить NetBox (удалить/переклассифицировать bsz-sw-26), Zabbix (хост bsz-sw-26)
+
+### Этап 34: Исправление bsz-sw-26 (2026-09-09)
+
+- NetBox: устройство bsz-sw-26 **удалено** (id=144). Всего устройств: 201
+- Zabbix: bsz-sw-26 не создавался (в BSZ_HOSTS не входил) — 23 хоста в группе BSZ
+- Причина: 192.168.41.250 = Windows-сервер (RDP/SMB/PostgreSQL), не D-Link
