@@ -447,3 +447,9 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - NetBox: устройство bsz-sw-26 **удалено** (id=144). Всего устройств: 201
 - Zabbix: bsz-sw-26 не создавался (в BSZ_HOSTS не входил) — 23 хоста в группе BSZ
 - Причина: 192.168.41.250 = Windows-сервер (RDP/SMB/PostgreSQL), не D-Link
+
+### Этап 35: Авто-unseal в vault-get/set (2026-09-09)
+
+- Добавлен авто-unseal в `scripts/vault-get.sh` и `vault-set.sh`
+- Баг: `/sys/health` при sealed возвращает 503, `curl -f` падал → unseal не срабатывал. Убран `-f`.
+- Проверено: seal → vault-get сам распечатывает и возвращает токен ✅

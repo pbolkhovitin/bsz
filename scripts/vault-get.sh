@@ -11,6 +11,13 @@ if [ ! -f "$KEY_FILE" ]; then
   echo "Нет файла ключей: $KEY_FILE"; exit 1
 fi
 source "$KEY_FILE"
+
+# Авто-unseal, если Vault запечатан
+if curl -s "$VAULT_ADDR/v1/sys/health" 2>/dev/null | grep -q '"sealed":true'; then
+  podman exec -e VAULT_ADDR=$VAULT_ADDR vault-bsz vault operator unseal "$UNSEAL_KEY" >/dev/null 2>&1
+  sleep 1
+fi
+
 export VAULT_ADDR
 export VAULT_TOKEN="${VAULT_TOKEN:-$ROOT_TOKEN}"
 

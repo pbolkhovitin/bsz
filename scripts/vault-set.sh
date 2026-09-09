@@ -5,6 +5,12 @@
 #   vault-set.sh bsz/netbox '{"url":"http://netbox.ais.local","token":"..."}'   # merge с существующим
 set -e
 source "$(dirname "$0")/../.vault/unseal.txt"
+
+# Авто-unseal, если Vault запечатан
+if curl -s "$VAULT_ADDR/v1/sys/health" 2>/dev/null | grep -q '"sealed":true'; then
+  podman exec -e VAULT_ADDR=$VAULT_ADDR vault-bsz vault operator unseal "$UNSEAL_KEY" >/dev/null 2>&1
+  sleep 1
+fi
 PATH_ARG="${1:-}"
 DATA_JSON="${2:-}"
 if [ -z "$PATH_ARG" ] || [ -z "$DATA_JSON" ]; then
