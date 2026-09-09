@@ -433,3 +433,11 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - 19-31 хостов (динамично): EliteGroup ×4, Cisco-Linksys ×3, a2i, Motion Control (вкл. по режиму),
   Lianrui CPE, bsz-sw-26 (D-Link .250), прочие
 - Часть Motion Control отключена на момент скана — производственное оборудование работает по графику
+
+### Этап 33: Коррекция — 192.168.41.250 НЕ коммутатор (2026-09-09)
+
+- **192.168.41.250** (78:98:E8:C1:E8:61): web=Microsoft-HTTPAPI, RDP 3389, SMB 445, PostgreSQL 5432
+  → **Windows-сервер**, назначение bsz-sw-26 отменено
+- **192.168.41.202** (A0:A3:F0:D2:20:53): офлайн, тип неподтверждён
+- Обновлены inventory-switches.md / inventory.md
+- TODO: поправить NetBox (удалить/переклассифицировать bsz-sw-26), Zabbix (хост bsz-sw-26)
