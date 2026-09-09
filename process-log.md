@@ -419,3 +419,11 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - `zabbix_map_bsz.py`: карта "BSZ - Топология" (id=8), 16 элементов + 16 связей
   (исправлены баги: label→array, iconid_off, width/height, links по selementid после создания)
 - Мониторинг работает: uptime собирается (state=0, ошибок нет)
+
+### Этап 31: Скан 192.168.40/41 (2026-09-09)
+
+- **192.168.40.0/24**: 5 хостов (ПК Gigabyte .22/.251, BC:5E:33 .244)
+- **192.168.41.0/24**: 31 хост — Motion Control ×14 (пром. контроллеры), Cisco-Linksys ×3,
+  a2i ×3, EliteGroup ×4, JRC Tokki, Lianrui CPE, **bsz-sw-26** (D-Link .41.250), прочие
+- Камеры Dahua/Hikvision сейчас не отвечают (были ранее)
+- Зафиксировано в inventory.md
