@@ -410,3 +410,12 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
   процедуры, правила) + раздел 6 «Будущий скрипт на Zabbix Proxy» (по аналогии projeckt-kg:
   scan_network_bsz.py, netbox_update_topo_bsz.py на 172.17.100.20)
 - Добавлен `scripts/netbox_sync_bsz.sh` (dry-run/импорт, токен из Vault)
+
+### Этап 30: Zabbix — настройка BSZ (2026-09-09)
+
+- Токен Zabbix сохранён в Vault `bsz/zabbix` (user pbolkhovitin_p)
+- `zabbix_setup_bsz.py`: группа BSZ (id=26), шаблон "Template BSZ SNMP" (9 метрик, community BSZ-m0n1t0r), создано **23 хоста** (bsz-sw-01..24 + gw.BSZ)
+- Хосты привязаны к прокси zabbix-proxy (id=2, host.update)
+- `zabbix_map_bsz.py`: карта "BSZ - Топология" (id=8), 16 элементов + 16 связей
+  (исправлены баги: label→array, iconid_off, width/height, links по selementid после создания)
+- Мониторинг работает: uptime собирается (state=0, ошибок нет)
