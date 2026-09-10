@@ -537,3 +537,11 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Кластер MNG (bsz-sw-03/06) — через ether5 (br-102), отдельно от ядра
 - bsz-sw-10 (107.53): uplink порт 16, к CRS328 напрямую не подключён
 - Открыт вопрос: combo3 CRS328 (неизвестный MikroTik 04:42:1a:e9:c7:a5)
+
+### Этап 46: Актуализация документации (2026-09-09)
+
+- Аудит: много устаревших данных (ядро DGS-3000 102.175, MNG 101.x, камеры в 192.168)
+- Актуализированы: README.md, inventory.md, inventory-switches.md (убран дубль разделов 1-7),
+  AGENTS.md, ipam-bsz.md, ipam-roadmap.md, zabbix.md, reports/network-analysis, acceptance-checklist
+- Ключевое: ядро CRS328 = 172.17.106.5; доступные коммутаторы bsz-sw-03(.12)/06(.15)/10(.53)/08(.18)
+- Зафиксированы дубли IP: CRS328 (106.5/107.97), bsz-sw-10 (107.53/106.215)
