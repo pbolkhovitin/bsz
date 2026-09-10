@@ -522,3 +522,10 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Карта портов CRS328 → коммутаторы (LLDP + ifDescr): sfp2→sw-11, sfp3→sw-12, sfp4→sw-15(122 MAC), sfp5→sw-20, sfp6→sw-24, sfp7→sw-21, sfp8→sw-19, sfp9→sw-14, sfp11→sw-16, sfp12→sw-22
 - FDB собраны с 4 коммутаторов (reports/fdb/): CRS328 181, bsz-sw-10 208, bsz-sw-03 36, bsz-sw-06 33 MAC
 - Обновлены: topology.md (карта портов), vault.md
+
+### Этап 44: Актуализация топологии (2026-09-09)
+
+- Схема в topology.md не соответствовала (старое ядро DGS-3000, адреса 101.x)
+- Переписана под актуальную: ядро **CRS328 (bsz-sw-01, 106.5)**, миграция в 106/107
+- LLDP-линки: gw.BSZ→bsz-sw-03(п6)/bsz-sw-05(п7); bsz-sw-03↔bsz-sw-06; ядро CRS328→10 коммутаторов (sfp2-13); bsz-sw-10→bsz-sw-18
+- Обновлена адресация, FDB-сводка, изменения миграции
