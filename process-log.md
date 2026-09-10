@@ -486,3 +486,9 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
   - bsz-sw-04/05 — STP работал (root=MikroTik, RootPort 1) — не требовал исправления
   - **bsz-sw-09 — STP был Disabled** → включён (`enable stp` + `save`), root=MikroTik, RootPort 46, Cost 60000
 - Отчёт reports/network-analysis-2026-09-09.md обновлён
+
+### Этап 40: Чек-лист принятия работ (2026-09-09)
+
+- Сформирован `reglamenty/acceptance-checklist-2026-09-09.md` — 9 разделов, ~40 пунктов:
+  инфраструктура/MNG, STP, SNMP/LLDP, NetBox, Zabbix, Vault, безопасность, документация, открытые вопросы
+- Включены: критерии приёмки, открытые вопросы (bsz-sw-07/10, конфликтный MAC, камеры, TP-Link)
