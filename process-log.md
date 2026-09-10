@@ -492,3 +492,13 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Сформирован `reglamenty/acceptance-checklist-2026-09-09.md` — 9 разделов, ~40 пунктов:
   инфраструктура/MNG, STP, SNMP/LLDP, NetBox, Zabbix, Vault, безопасность, документация, открытые вопросы
 - Включены: критерии приёмки, открытые вопросы (bsz-sw-07/10, конфликтный MAC, камеры, TP-Link)
+
+### Этап 41: Конфигурация RB5009 (2026-09-09)
+
+- Получен полный конфиг RB5009 (gw.BSZ) через RouterOS API (bszapi, библиотека routeros-api 0.21)
+- Ключевое: RouterOS 7.23.5, SSH/WEB/telnet выключены, SNMP/NTP/API/API-SSL включены, winbox на 58002
+- IP: 101.1 и 102.1 на br-102 (один L2), 106.1 на br-106 (камеры), 104.1 новый
+- Маршруты: default через SFP+ и l2tp-Slell, 172.17.0.0/16 через GRE
+- Пользователи: 4×full + bszapi (ro)
+- Сохранено: reports/rb5009-config-2026-09-09.md
+- ⚠️ bszapi не отдал LLDP через API (пусто) — SNMP-опрос работает
