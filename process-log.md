@@ -545,3 +545,19 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
   AGENTS.md, ipam-bsz.md, ipam-roadmap.md, zabbix.md, reports/network-analysis, acceptance-checklist
 - Ключевое: ядро CRS328 = 172.17.106.5; доступные коммутаторы bsz-sw-03(.12)/06(.15)/10(.53)/08(.18)
 - Зафиксированы дубли IP: CRS328 (106.5/107.97), bsz-sw-10 (107.53/106.215)
+
+### Этап 47: Обновление NetBox и Zabbix (2026-09-09)
+
+**NetBox:**
+- IP Management обновлены: bsz-sw-01 → 172.17.106.5, bsz-sw-10 → 172.17.107.53,
+  bsz-sw-08 → 172.17.101.18 (101.18 переназначен с bsz-sw-09, 101.17 → bsz-sw-09)
+- Кабели актуализированы: uplink CRS328(sfp-sfpplus1/Eth25) → bsz-sw-05 → gw.BSZ ether6;
+  gw.BSZ ether5 → bsz-sw-03 → bsz-sw-06; CRS328 sfp6 → bsz-sw-24
+- Кабель #79 (CRS328↔bsz-sw-02, устарел) удалён, заменён на #98 (CRS328↔bsz-sw-05)
+
+**Zabbix:**
+- Обновлены IP: bsz-sw-01 → 106.5, bsz-sw-03 → 101.12, bsz-sw-08 → 101.18
+- Добавлен хост bsz-sw-10 (172.17.107.53, SNMP BSZ-m0n1t0r, шаблон Template BSZ SNMP)
+- Итого хостов BSZ: 23
+
+**Осталось (BSZ кабели к bsz-sw-02/DGS-3000 #80-83,93):** не удалены — DGS-3000 может быть жив.
