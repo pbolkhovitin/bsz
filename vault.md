@@ -79,3 +79,14 @@ PVE_TOKEN=$(bash scripts/vault-get.sh bsz/pve/mpve10 token)
 - Unseal-ключ и root-token дают **полный доступ** ко всем секретам — храни безопасно
 - Если контейнер пересоздаётся без `vault/data/` — секреты будут потеряны (нужно переинициализировать)
 - Рекомендуется сделать backup `vault/data/` и `.vault/unseal.txt` в отдельное защищённое место
+## Обновление 2026-09-09
+
+Добавлены пути:
+| Путь | Содержимое |
+|------|-----------|
+| `bsz/mikrotik/crs328` | CRS328 (ядро, 172.17.106.5): api_url, user (monitoring), password, identity (bsz-sw-01) |
+| `bsz/netbox` | url, token, username (bolkhovitin_p) |
+| `bsz/zabbix` | url, token, user (pbolkhovitin_p) |
+
+> Доступ к API CRS328: user `monitoring` (группа api-readonly), **plaintext-логин** (challenge не работает).
+> Пароль — в Vault (`bsz/mikrotik/crs328`), НЕ в файлах.

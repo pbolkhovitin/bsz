@@ -514,3 +514,11 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Не найдены: bsz-sw-02/04/05/07/08/09/11-22/23/24 (offline или иной сегмент)
 - Дубли: bsz-sw-01 (106.5/107.97), bsz-sw-10 (106.215/107.53)
 - Таблицы: reports/migration-map-2026-09-09.md
+
+### Этап 43: API CRS328 + FDB + карта портов (2026-09-09)
+
+- API CRS328 (ядро, 172.17.106.5) работает: user monitoring / пароль (plaintext-логин), сохранён в Vault bsz/mikrotik/crs328
+- CRS328: bridge со всеми портами, IP 106.5/23, активны 12 SFP-портов
+- Карта портов CRS328 → коммутаторы (LLDP + ifDescr): sfp2→sw-11, sfp3→sw-12, sfp4→sw-15(122 MAC), sfp5→sw-20, sfp6→sw-24, sfp7→sw-21, sfp8→sw-19, sfp9→sw-14, sfp11→sw-16, sfp12→sw-22
+- FDB собраны с 4 коммутаторов (reports/fdb/): CRS328 181, bsz-sw-10 208, bsz-sw-03 36, bsz-sw-06 33 MAC
+- Обновлены: topology.md (карта портов), vault.md
