@@ -584,3 +584,11 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
   vendor (D-Link/MikroTik), location (BSZ), os (RouterOS 7.23.5 для gw.BSZ/bsz-sw-01)
 - Исправлены ошибки импорта NetBox: EliteGroup→MikroTik, Dlink→D-Link
 - Проверка: 23/23 хостов с инвентарём (selectInventory)
+
+### Этап 50: Сравнение плагинов netbox-zabbix (2026-09-09)
+
+- Сравнены pbolkhovitin/netbox-zabbix (используемый, форк DanSheps) и pergus/netbox-zabbix
+- Используемый: сигналы→jobs→API, инвентарь build_inventory(), UI нет, совместим с NetBox 4.0-4.6.99
+- Ограничение Zabbix 7.0: host.update игнорирует name/model/serialno_a/location — инвентарь только при create
+- pergus: полная архитектура (Settings/Mappings/Views/API), InventoryMapping, setup_zabbix
+- Документировано в zabbix.md
