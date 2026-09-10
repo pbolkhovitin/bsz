@@ -572,3 +572,15 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
   - CRS328 → 10 коммутаторов доступа (11,12,14,15,16,19,20,21,22,24)
   - bsz-sw-10 → bsz-sw-18
 - Иконки: Switch_(128) для коммутаторов, Router_(128) для gw.BSZ
+
+### Этап 49: Инвентарь Zabbix из NetBox (2026-09-09)
+
+- **Диагноз:** плагин netbox-zabbix (форк pbolkhovitin/netbox-zabbix от DanSheps) установлен (v2.0.3,
+  max_version 4.6.99), но **не синхронизировал инвентарь**:
+  1. Хосты Zabbix созданы скриптом `zabbix_setup_bsz.py` напрямую, **минуя плагин** (нет custom field `zabbix_hostid`)
+  2. Плагин синхронизирует хосты (создание/обновление) по сигналам NetBox, но инвентарь не заполнял
+  3. В NetBox у BSZ-устройств нет serial/asset_tag (только model/manufacturer/role/site)
+- **Заполнено вручную из NetBox (Zabbix API):** 23 хоста — type (Switch/Router), hardware (модель),
+  vendor (D-Link/MikroTik), location (BSZ), os (RouterOS 7.23.5 для gw.BSZ/bsz-sw-01)
+- Исправлены ошибки импорта NetBox: EliteGroup→MikroTik, Dlink→D-Link
+- Проверка: 23/23 хостов с инвентарём (selectInventory)
