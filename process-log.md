@@ -479,3 +479,10 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Найдено: MAC 3e:78:95:05:c5:ac на 7 IP (конфликт); STP self-root на bsz-sw-04/05/09;
   uplink шлюза (bsz-sw-03) на DHCP; TRASSIR/Windows-серверы не в NetBox
 - Рекомендации: перевести bsz-sw-03 на 101.12, исправить STP, разобраться с конфликтным MAC
+
+### Этап 39: Исправление STP bsz-sw-09 (2026-09-09)
+
+- SNMP-опрос dot1dStp на FW 7.03 некорректен (root=0 ложно); по CLI (show stp):
+  - bsz-sw-04/05 — STP работал (root=MikroTik, RootPort 1) — не требовал исправления
+  - **bsz-sw-09 — STP был Disabled** → включён (`enable stp` + `save`), root=MikroTik, RootPort 46, Cost 60000
+- Отчёт reports/network-analysis-2026-09-09.md обновлён
