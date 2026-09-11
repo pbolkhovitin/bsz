@@ -636,3 +636,8 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Удалены cron-задачи автоперезапуска firewall (Firewall::removeCronJob — каждые 5/15 мин)
 - Включён AllowOverride All + mod_rewrite (fix 500 «Invalid command RewriteEngine»)
 - Веб/админка: HTTP 200, вход admin работает
+
+### Этап 56: FreePBX — доверенные сети + VPN 172.15.0.0/16 (2026-09-11)
+- Firewall trusted: добавлена 172.15.0.0/16 (VPN/GRE-туннели)
+- fail2ban ignoreip: 127.0.0.1/8, ::1, 172.17.0.0/16, 172.15.0.0/16
+- Проверено: веб HTTP 200, fail2ban whitelist применён

@@ -257,3 +257,8 @@ rtp.conf: rtpstart=10000, rtpend=20000
 - **Fix `.htaccess`**: включён `AllowOverride All` + модуль **mod_rewrite** (иначе 500
   «Invalid command 'RewriteEngine'»)
 - Управление: `fwconsole firewall start|stop|add trusted <net>`
+
+### Firewall FreePBX — доверенные сети (обновлено)
+- Trusted: **172.17.0.0/16**, **172.15.0.0/16** (VPN/GRE-туннели), 172.17.102.0/23, 172.17.103.0/24, 172.17.103.149/32
+- fail2ban ignoreip: `127.0.0.1/8 ::1 172.17.0.0/16 172.15.0.0/16`
+- 172.15.0.0/16 — GRE-туннели между подразделениями (gre-B1/RTP1/OP1/ves-BSZ)
