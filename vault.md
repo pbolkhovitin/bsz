@@ -90,3 +90,12 @@ PVE_TOKEN=$(bash scripts/vault-get.sh bsz/pve/mpve10 token)
 
 > Доступ к API CRS328: user `monitoring` (группа api-readonly), **plaintext-логин** (challenge не работает).
 > Пароль — в Vault (`bsz/mikrotik/crs328`), НЕ в файлах.
+
+## FreePBX (2026-09-11)
+
+| Путь | Содержимое |
+|------|-----------|
+| `bsz/freepbx` | url (http://172.17.103.228), web_admin_user/password, db_user/password/name, ami_user/password/host/port, snmp_community, lxc_vmid, extensions, sip_port |
+
+> Web UI FreePBX: admin / (пароль в Vault). AMI: 172.17.103.228:5038.
+> SNMP: community `BSZ-m0n1t0r` (для Zabbix). LLDP включён.

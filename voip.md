@@ -196,3 +196,55 @@ rtp.conf: rtpstart=10000, rtpend=20000
 | `bsz/freepbx/trunk_rostelecom` | транк Ростелеком (при получении) |
 | `bsz/freepbx/trunk_<site>` | внутренние транки (при настройке) |
 | `bsz/freepbx/provisioning` | ключи автопровижининга (при настройке) |
+---
+
+## FreePBX 17 — развёртывание и настройка (2026-09-11)
+
+### Размещение
+| Параметр | Значение |
+|----------|----------|
+| Платформа | LXC **VMID 103** на PVE **mpve-10** (172.17.102.10) |
+| IP | **172.17.103.228** (DHCP br-102) |
+| Веб-интерфейс | http://172.17.103.228/ (admin) |
+| Asterisk | 22.10.1 |
+| FreePBX | 17.0.33 (framework) |
+| Установка | community-scripts `ct/freepbx.sh` (зеркало ghfast.top) |
+
+### Внутренние номера (extensions)
+- **Диапазон: 2020–2050** (31 номер), контекст `from-internal`
+- Пароль SIP: `FPbx<номер>!` (например, 2020 → `FPbx2020!`)
+- Технология: **PJSIP**, порт **5060** UDP
+- Созданы через API FreePBX (`Core::addUser` + `addDevice`, tech=pjsip)
+- Для автоподключения Yealink: на телефоне указать сервер 172.17.103.228, логин/пароль номера
+
+### Доступ (все секреты — в Vault `bsz/freepbx`)
+| Интерфейс | Адрес | Логин |
+|-----------|-------|-------|
+| Web UI | http://172.17.103.228 | admin / (Vault) |
+| AMI | 172.17.103.228:5038 | (Vault: ami_user/ami_password) |
+| MySQL | localhost | freepbxuser / (Vault) |
+| SNMP | 172.17.103.228:161 | community BSZ-m0n1t0r |
+| LLDP | eth0 | видит gw.BSZ (ether3/br-102) |
+
+### Мониторинг
+- **SNMP** (snmpd): community `BSZ-m0n1t0r`, порт 161 — готов для Zabbix
+- **LLDP** (lldpd): включён, сосед gw.BSZ
+- **AMI**: открыт на 0.0.0.0:5038 (permit 172.17.0.0/16) — для мониторинга
+
+### Особенности (важно)
+1. **ionCube**: после установки требуется `systemctl restart apache2` (иначе ошибка в веб).
+2. **Активация Sangoma**: отключены все коммерческие модули (adv_recovery, areminder, cdrpro,
+   pms, sysadmin и др.) — они требовали активацию через недоступный portal. Для локальной АТС не нужны.
+3. **Права admin**: пользователь создан вручную в БД, требуется `sections='*'` (иначе
+   «ajaxRequest declined — Permissions»).
+4. **Мастер Firewall** можно пропустить (Abort) — для локальной АТС не обязателен.
+5. **Проблема сети**: deb.freepbx.org (CloudFront) нестабилен — часть IP таймаутит.
+   Решение: закрепить рабочий IP в `/etc/hosts` контейнера (`65.9.46.122 deb.freepbx.org`).
+6. Установка FreePBX шла ~2 часа, падала на `asterisk22-dahdi` из-за таймаута CloudFront;
+   решено предзагрузкой .deb в apt-кэш + закреплением IP.
+
+### Следующие шаги
+- [ ] SIP-транк Ростелеком (внешние звонки)
+- [ ] GRE-транки между подразделениями (gre-B1, gre-RTP1, gre-RTP2)
+- [ ] Автопровижининг Yealink/Grandstream
+- [ ] Добавить FreePBX в Zabbix (SNMP) и NetBox

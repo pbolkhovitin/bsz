@@ -611,3 +611,14 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Камеры → 106.x, телефоны/Wi-Fi → 107.x, принтеры → 102.x
 - Данные: reports/network-scan-2026-09-11.md, reports/fdb/*_2026-09-11.txt, scan/raw/arp_rb5009_2026-09-11.txt
 - Актуализированы: topology.md, inventory.md, inventory-switches.md, AGENTS.md
+
+### Этап 53: Развёртывание и настройка FreePBX 17 (2026-09-11)
+
+- LXC 103 на mpve-10, IP 172.17.103.228, Asterisk 22.10.1, FreePBX 17.0.33
+- Установка через community-scripts ct/freepbx.sh; проблема CloudFront решена предзагрузкой .deb + закреплением IP 65.9.46.122
+- ionCube: fix перезапуском apache2
+- Созданы extensions **2020–2050** (31 шт, PJSIP, пароль FPbx<номер>!) через API FreePBX
+- Отключены все коммерческие модули (требовали активацию Sangoma portal) — решена ошибка Activation Error
+- Права admin: sections='*' (fix «ajaxRequest declined — Permissions»)
+- AMI открыт на 0.0.0.0:5038 (permit 172.17.0.0/16); SNMP (BSZ-m0n1t0r) и LLDP включены
+- Креды в Vault `bsz/freepbx`; документация в voip.md, vault.md
