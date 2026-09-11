@@ -155,3 +155,10 @@ bash scripts/netbox_sync_bsz.sh
 - [ ] Развернуть на Zabbix Proxy (172.17.100.20)
 - [ ] Cron/timer: ежедневный скан + обновление NetBox
 - [ ] Создать в Vault `bsz/zabbix` (url, token)
+
+## FreePBX в NetBox (2026-09-11)
+
+- Устройство **freepbx-100** (id=150): type=Linux Server, role=Server, site=BSZ
+- IP Management: **172.17.103.228/32** (обновлён с 172.17.100.15)
+- Описание: FreePBX 17 / Asterisk 22.10.1 (LXC 103 на PVE mpve-10)
+- Комментарий: номера 2020-2050 (PJSIP), web http://172.17.103.228, SNMP BSZ-m0n1t0r

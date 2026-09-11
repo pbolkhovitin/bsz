@@ -622,3 +622,9 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Права admin: sections='*' (fix «ajaxRequest declined — Permissions»)
 - AMI открыт на 0.0.0.0:5038 (permit 172.17.0.0/16); SNMP (BSZ-m0n1t0r) и LLDP включены
 - Креды в Vault `bsz/freepbx`; документация в voip.md, vault.md
+
+### Этап 54: FreePBX в NetBox и Zabbix (2026-09-11)
+
+- **Zabbix**: создан хост `freepbx` (SNMP 172.17.103.228, группа BSZ, Template BSZ SNMP, инвентарь VoIP PBX);
+  добавлен на карту «BSZ - Топология» (связь gw.BSZ ↔ freepbx). Итого 24 хоста BSZ.
+- **NetBox**: обновлено устройство `freepbx-100` — IP 172.17.100.15 → **172.17.103.228/32**, описание/комментарий.
