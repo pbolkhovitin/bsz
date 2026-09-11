@@ -641,3 +641,11 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Firewall trusted: добавлена 172.15.0.0/16 (VPN/GRE-туннели)
 - fail2ban ignoreip: 127.0.0.1/8, ::1, 172.17.0.0/16, 172.15.0.0/16
 - Проверено: веб HTTP 200, fail2ban whitelist применён
+
+### Этап 57: FreePBX extensions 2022-2050 (2026-09-11)
+
+- Созданы extensions 2022-2050 (29 шт) через API FreePBX (Core::addUser + addDevice, PJSIP)
+- Итого endpoints: 2020-2050 (31 шт), пароль FPbx<номер>!
+- ⚠️ FreePBX сменил IP при перезапуске: 172.17.103.228 → **172.17.102.15** (DHCP)
+- Vault bsz/freepbx обновлён: url=http://172.17.102.15, sip_server=172.17.102.15
+- Телефоны 2020/2021 настроены на старый IP — требуется перенастройка на 172.17.102.15
