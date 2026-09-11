@@ -592,3 +592,9 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Ограничение Zabbix 7.0: host.update игнорирует name/model/serialno_a/location — инвентарь только при create
 - pergus: полная архитектура (Settings/Mappings/Views/API), InventoryMapping, setup_zabbix
 - Документировано в zabbix.md
+
+### Этап 51: Приёмочный документ для заказчика (2026-09-11)
+
+- Создан reglamenty/acceptance-customer-2026-09-11.md — простым языком, без технических деталей
+- 4 блока приёмки: сеть (ресурсы/интернет/принтеры), Wi-Fi, видеонаблюдение, телефония SIP
+- Формат: критерии с чек-боксами, процедура приёмки, заключение, подписи сторон
