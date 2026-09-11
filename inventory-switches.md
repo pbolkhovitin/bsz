@@ -19,13 +19,14 @@
 | 172.17.101.18 | **bsz-sw-08** | DES-1210-52/ME/C1 | A0:A3:F0:B5:B8:80 | DHCP br-102, SNMP нет |
 
 ### За ядром (LLDP видит, SNMP недоступен)
-bsz-sw-11, bsz-sw-12, bsz-sw-14, bsz-sw-15, bsz-sw-16, bsz-sw-18, bsz-sw-19,
-bsz-sw-20, bsz-sw-21, bsz-sw-22, bsz-sw-24 — живы (LLDP через CRS328/bsz-sw-10), IP неизвестны.
+bsz-sw-11, bsz-sw-12, bsz-sw-14, bsz-sw-15, bsz-sw-16, bsz-sw-18 (**жив**, за bsz-sw-10 п16),
+bsz-sw-19, bsz-sw-20, bsz-sw-21, bsz-sw-22, bsz-sw-24 — живы (LLDP через CRS328/bsz-sw-10), IP неизвестны.
 
-### Транзитный коммутатор
+### Транзитные коммутаторы (2026-09-11)
 | Имя | Модель | MAC | Роль |
 |-----|--------|-----|------|
-| **bsz-sw-05** | DGS-1210-20/ME/A1 | 6C:72:20:C1:9D:32 | транзит RB5009(ether6) → CRS328(sfp-sfpplus1), mgmt IP не найден |
+| **bsz-sw-05** | DGS-1210-20/ME/A1 | 6C:72:20:C1:9D:32 | транзит RB5009(ether6) → DGS-3000 |
+| **bsz-sw-02** (DGS-3000) | DGS-3000-28XS | 88:76:B9:63:68:40 | **жив!** транзит bsz-sw-05 → CRS328(sfp-sfpplus1), mgmt IP не найден |
 
 ## 2. Legacy D-Link, переехавшие в 106/107
 

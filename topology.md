@@ -1,6 +1,6 @@
 # Топология сети
 
-> Дата обновления: 2026-09-09 (актуализирована по последним данным LLDP+FDB+ARP)
+> Дата обновления: 2026-09-11 (полный перескан)
 > Источник: LLDP (SNMP lldpRemTable), FDB (dot1qTpFdbTable), ARP (RB5009/CRS328), API RouterOS
 > ⚠️ Миграция: ядро — **CRS328 (bsz-sw-01, 172.17.106.5)**; инфраструктура/камеры → 172.17.106/107.x
 
@@ -17,7 +17,8 @@ graph TB
     end
 
     subgraph TRANSIT["Транзит 106 (br-106)"]
-        SW05["bsz-sw-05 (D-Link)<br/>без mgmt IP"]
+        SW05["bsz-sw-05 (D-Link)<br/>транзит"]
+        SW02["bsz-sw-02 (DGS-3000)<br/>транзит, жив"]
     end
 
     subgraph CORE["Ядро CRS328"]
@@ -50,7 +51,8 @@ graph TB
 
     ISP --> RB
     RB -- "ether6 (br-106)" --> SW05
-    SW05 -- "sfp-sfpplus1" --> CRS
+    SW05 -- "--" --> SW02
+    SW02 -- "sfp-sfpplus1" --> CRS
     RB -- "ether5 (br-102)" --> SW03
     SW03 -- "порт17" --> SW06
 
@@ -77,7 +79,8 @@ graph TB
 | А | Порт А | Порт B | B | Метод |
 |---|---|---|---|---|
 | **RB5009** (gw.BSZ) | ether6 (br-106) | — | **bsz-sw-05** | LLDP RB5009 (localport 7), FDB RB5009→CRS328 |
-| bsz-sw-05 | — | sfp-sfpplus1 | **CRS328** (106.5) | FDB: RB5009 MAC на sfp-sfpplus1; CRS328 MAC на ether6 |
+| bsz-sw-05 | — | — | **bsz-sw-02** (DGS-3000) | LLDP: CRS328 sfp-sfpplus1 → 88:76:B9:63:68:40 |
+| bsz-sw-02 (DGS-3000) | — | sfp-sfpplus1 | **CRS328** (106.5) | LLDP + FDB (порт 5) |
 | RB5009 | ether5 (br-102) | порт1 | **bsz-sw-03** (101.12) | LLDP RB5009 (localport 6), LLDP sw-03 |
 | bsz-sw-03 | порт17 | порт20 | **bsz-sw-06** (101.15) | LLDP с обеих сторон |
 | **CRS328** (106.5) | sfp2 | | bsz-sw-11 | LLDP + FDB |
@@ -99,7 +102,8 @@ graph TB
 |---|---|---|
 | gw.BSZ (RB5009) | 172.17.106.1 / 102.1 / 100.1 / 104.1 | br-106/102/100/104 |
 | bsz-sw-01 (CRS328, ядро) | 172.17.106.5 | br-106 (транзит) |
-| bsz-sw-05 | без mgmt IP (только L2, транзит) | br-106 |
+| bsz-sw-05 | без mgmt IP (транзит) | br-106 |
+| bsz-sw-02 (DGS-3000) | без mgmt IP (транзит, жив) | br-106 |
 | bsz-sw-03 | 172.17.101.12 | br-102 |
 | bsz-sw-06 | 172.17.101.15 | br-102 |
 | bsz-sw-10 | 172.17.107.53 | br-106 |
@@ -113,7 +117,7 @@ graph TB
 
 ## Ключевые выводы (2026-09-09)
 1. **Ядро сети — CRS328 (bsz-sw-01, 106.5)**, аплинк к шлюзу через **sfp-sfpplus1 → bsz-sw-05 → RB5009 ether6**.
-2. **bsz-sw-05** — транзитный коммутатор (без управляемого IP) между шлюзом и ядром.
+2. **bsz-sw-05 → DGS-3000 (bsz-sw-02)** — два транзитных коммутатора между шлюзом (ether6) и ядром (sfp-sfpplus1).
 3. **Кластер MNG** (bsz-sw-03/06) подключён к RB5009 ether5 (br-102), отдельно от ядра.
 4. **bsz-sw-10** (107.53) — в сегменте 106, uplink порт 16, к CRS328 напрямую НЕ подключён (видит RB5009 через транзит).
 5. Сегмент 107.x — Wi-Fi (TP-Link EAP225/223/245).
