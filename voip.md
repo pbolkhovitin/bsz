@@ -248,3 +248,12 @@ rtp.conf: rtpstart=10000, rtpend=20000
 - [ ] GRE-транки между подразделениями (gre-B1, gre-RTP1, gre-RTP2)
 - [ ] Автопровижининг Yealink/Grandstream
 - [ ] Добавить FreePBX в Zabbix (SNMP) и NetBox
+
+### Firewall FreePBX (2026-09-11, настроен на доверенную сеть)
+
+- **Включён** с доверенной сетью **172.17.0.0/16** (Trusted zone) + рабочие станции
+- fail2ban `ignoreip`: `127.0.0.1/8 ::1 172.17.0.0/16` — локальные адреса не банятся
+- Cron-задачи авто-перезапуска firewall (каждые 5/15 мин) удалены (`Firewall::removeCronJob`)
+- **Fix `.htaccess`**: включён `AllowOverride All` + модуль **mod_rewrite** (иначе 500
+  «Invalid command 'RewriteEngine'»)
+- Управление: `fwconsole firewall start|stop|add trusted <net>`

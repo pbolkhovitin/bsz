@@ -628,3 +628,11 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - **Zabbix**: создан хост `freepbx` (SNMP 172.17.103.228, группа BSZ, Template BSZ SNMP, инвентарь VoIP PBX);
   добавлен на карту «BSZ - Топология» (связь gw.BSZ ↔ freepbx). Итого 24 хоста BSZ.
 - **NetBox**: обновлено устройство `freepbx-100` — IP 172.17.100.15 → **172.17.103.228/32**, описание/комментарий.
+
+### Этап 55: Firewall FreePBX + .htaccess (2026-09-11)
+
+- Firewall настроен на **доверенную сеть 172.17.0.0/16** (защита внешних + без блокировки локальных)
+- fail2ban whitelist: 127.0.0.1/8, ::1, 172.17.0.0/16
+- Удалены cron-задачи автоперезапуска firewall (Firewall::removeCronJob — каждые 5/15 мин)
+- Включён AllowOverride All + mod_rewrite (fix 500 «Invalid command RewriteEngine»)
+- Веб/админка: HTTP 200, вход admin работает
