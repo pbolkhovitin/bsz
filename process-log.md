@@ -727,3 +727,22 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Разобраться с привязкой прокси: возможно нужен `proxy_groupid` или passive-прокси, или правка БД Zabbix
 - Либо настроить прокси как passive и привязать
 - После этого: проверить передачу прокси→сервер, обновить zabbix.md/netbox.md
+
+### ⏸️ ПАУЗА 2 — точка продолжения (2026-09-12)
+
+## Прогресс с прошлой паузы
+- ✅ Получен новый токен Zabbix server: `02d00ca7742fb6e7a4104785e33e4e06f02187d3c33d8cf27cf7b35d9b1157e2` → сохранён в Vault `bsz/zabbix`
+- ✅ Креды web: `pbolkhovitin_p` / `rYfq7W4AVTJFfkUmdXkp` (работают для входа в UI)
+- ✅ **Прокси zabbix-proxy (id=2, 172.17.102.20) — ОНЛАЙН** (подтверждено в web-UI: "Онлайн", 7.0.30, heartbeat 3с)
+  - API state=offline был ошибочным отображением
+  - Прокси получает конфиг от сервера (datalen 5475), sqlite OK, место есть
+- ⚠️ API-привязка хоста к прокси НЕ работает (`host.update`/`massupdate` → success, но proxyid=0;
+  `monitored_by=1` → "object does not exist or no permissions")
+
+## Не завершено
+- **Привязка 35 хостов BSZ к прокси id=2 через web-UI** — Playwright-скрипт упал (ошибка в клике по multiselect #proxyid). Нужен рабочий JS-клик: раскрыть `#proxyid` multiselect → выбрать "zabbix-proxy" → нажать #update.
+- После привязки: проверить передачу прокси→сервер, обновить docs.
+
+## Следующий шаг (при продолжении)
+- Отладить Playwright-скрипт привязки прокси (клик по опции multiselect в Zabbix 7).
+- Привязать все хосты BSZ к прокси 2 (id=2).
