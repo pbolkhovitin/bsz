@@ -656,3 +656,13 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Omada Controller 6.2.14.11 (API v3), LXC 100 на PVE mpve-10, порты 8043/8088/8843
 - Доступ подтверждён: HTTPS 8043 (200), логин asu успешен (API v2 login → token)
 - API v1 (/api/token) не поддерживается — только v2
+
+### Этап 59: Исследование Omada Controller (2026-09-12)
+
+- Логин подтверждён: asu / $ignaL@4825 (пароль из Vault обновлён)
+- Omada Controller 6.2.14.11, LXC 100, порты 8043/8088/8843
+- **34 EAP** (25×EAP225-Outdoor, 5×EAP110-Outdoor, 2×EAP223, 2×EAP245), 22 подключено, 11 offline
+- 4 SSID: BSZ, WORK, BSZ-2.4, WORK-2.4 (WPA2/3, без VLAN)
+- 187 WiFi-клиентов
+- **API**: работает только с префиксом omadacId (/{omadacId}/api/v2/...); данные также в MongoDB (порт 27217)
+- Отчёт: reports/omada-controller-2026-09-12.md
