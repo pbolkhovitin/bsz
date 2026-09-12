@@ -690,3 +690,9 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Private MIB TP-Link: 1.3.6.1.4.1.11863.3.2.10
 - Можно добавить AP в Zabbix (SNMP)
 - 11 OFFLINE AP — SNMP нет
+
+### Этап 63: Точки доступа Omada в Zabbix и NetBox (2026-09-12)
+
+- Zabbix: +22 хоста eap-* (SNMP BSZ-m0n1t0r, шаблон BSZ) → всего 46 хостов BSZ
+- NetBox: +22 устройства EAP225-Outdoor (роль «Точка доступа»), IP → eth0
+- Исправлена привязка IP 172.17.102.21 (tplinklimited-21 → «Механики»)

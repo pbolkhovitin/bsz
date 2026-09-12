@@ -129,3 +129,9 @@ systemctl status zabbix-proxy
 | Карта | добавлен на «BSZ - Топология», связь gw.BSZ ↔ freepbx |
 
 > Итого хостов BSZ: **24**.
+
+## Точки доступа (EAP) в Zabbix (2026-09-12)
+
+- Добавлено **22 AP** (SNMP BSZ-m0n1t0r, шаблон Template BSZ SNMP)
+- Имена: `eap-<транслит>` (eap-gshu, eap-mehaniki, eap-tspu и т.д.)
+- Итого хостов BSZ: **46**

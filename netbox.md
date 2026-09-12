@@ -162,3 +162,10 @@ bash scripts/netbox_sync_bsz.sh
 - IP Management: **172.17.103.228/32** (обновлён с 172.17.100.15)
 - Описание: FreePBX 17 / Asterisk 22.10.1 (LXC 103 на PVE mpve-10)
 - Комментарий: номера 2020-2050 (PJSIP), web http://172.17.103.228, SNMP BSZ-m0n1t0r
+
+## Точки доступа (EAP) в NetBox (2026-09-12)
+
+- Добавлено **22 AP**: device_type EAP225-Outdoor, роль «Точка доступа», site BSZ
+- IP привязаны к интерфейсу eth0 (172.17.102.x и 172.17.107.x)
+- Исправлено: IP 172.17.102.21 переназначен с tplinklimited-21 на «Механики»
+- Всего EAP225-Outdoor в NetBox: 26 (вкл. 4 чужих «Beach/Otel» из другого проекта)
