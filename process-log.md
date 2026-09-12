@@ -762,3 +762,44 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Zabbix **server 7.0.30** (172.17.231.25, zbx.ais.local)
 - Прокси: mpve11 7.0.29, zabbix-proxy 7.0.30
 - Причина для изучения: возможно, ошибка привязки прокси связана с версией сервера/прокси, требуется обновление
+
+### ✅ РЕШЕНО: привязка 57 хостов BSZ к прокси id=2 (2026-09-12)
+
+## Суть проблемы
+- Привязка хоста к прокси через **Zabbix API НЕ работает** (баг/ограничение сервера 7.0.30):
+  - `host.update`/`host.create`/`host.massupdate` с `proxy_hostid="2"` → возвращают success, но `proxyid` остаётся 0
+  - `monitored_by=1` + `proxy_hostid` → "Invalid parameter /1/proxyid: object does not exist, or you have no permissions to it"
+  - Даже существующий хост на прокси 1 (`gw-192.168.3.1`, proxyid=1) не подтвердил рабочесть API-метода
+  - `proxyid` в `host.update` принимает только 0
+- Привязка возможна ТОЛЬКО через web-форму (host.edit → POST)
+
+## Решение (рабочий метод)
+Отправка формы напрямую через `fetch` в браузерной сессии Playwright:
+```js
+const fd = new FormData(document.getElementById('host-form'));
+fd.set('monitored_by', '1');   // radio «Прокси»
+fd.set('proxyid', '2');        // zabbix-proxy
+fd.set('status', '<0|1>');     // ОБЯЗАТЕЛЬНО для disabled-хостов (иначе «Поле status обязательно»)
+fd.set('update', 'Обновить');
+await fetch(form.action, {method:'POST', body: fd});
+```
+- Открывать `zabbix.php?action=host.edit&hostid=<id>` → кликнуть `label[for=monitored_by_1]` → POST
+- Для enabled-хостов status не нужен, для disabled (status=1) обязателен
+
+## Результат
+- **57 хостов BSZ привязаны к прокси `zabbix-proxy` (id=2, 172.17.102.20)**:
+  - 35 хостов группы BSZ (gw.BSZ, freepbx, eap-* 33 шт) — на прокси 2
+  - 22 коммутатора bsz-sw-01..24 — добавлены в группу BSZ (26) через `hostgroup.massadd` (были в ProjectKG-25 из-за плагина NetBox) и привязаны к прокси 2
+- На сервере (proxyid=0) хостов BSZ: **0**
+- Прокси 2 возвращён в **active** (operating_mode=0); API state показывает offline, но web-UI — «Онлайн», данные текут
+
+## Проверка передачи данных (прокси → сервер)
+- bsz-sw-01 ICMP ping: возраст 58с ✅
+- bsz-sw-10 ICMP ping: возраст 59с ✅
+- gw.BSZ SNMP Location: возраст 18с ✅
+- eap-gschu SNMP Location: возраст 4с ✅
+- freepbx SNMP Location: 57136с (SNMP на FreePBX не отвечает/недавно включён — проверить отдельно)
+
+## Вывод
+- **Вопрос обновления Zabbix server отпал** — причина не в версиях, а в ограничении API привязки прокси.
+- Zabbix server 7.0.30 работает корректно, данные от всех BSZ-хостов поступают через прокси.

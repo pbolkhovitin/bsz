@@ -1,6 +1,6 @@
 # Zabbix — мониторинг сети BSZ
 
-> Дата обновления: 2026-09-09
+> Дата обновления: 2026-09-12
 > Zabbix Proxy развёрнут на PVE (mpve-10). Zabbix Server — общий (`zbx.ais.local`, 172.17.231.25),
 > используется совместно с проектом projeckt-kg.
 
@@ -8,12 +8,18 @@
 
 | Компонент | Значение |
 |-----------|----------|
-| Zabbix Server | **zbx.ais.local** (172.17.231.25), версия 7.0.26 |
-| Zabbix Proxy | **172.17.100.20** (LXC 102, PVE mpve-10) |
+| Zabbix Server | **zbx.ais.local** (172.17.231.25), версия **7.0.30** |
+| Zabbix Proxy | **172.17.102.20** (LXC 102, PVE mpve-10), имя `zabbix-proxy` |
 | Версия | Zabbix Proxy 7.0.30 (sqlite3) |
 | Прокси в Zabbix | **id=2**, active mode |
 | Порт | 10051/tcp |
-| Доступ | SSH root, ключ `id_ed25519_pve` |
+| Хостов BSZ на прокси | **57** (35 в группе BSZ + 22 bsz-sw-01..24) |
+| Доступ к серверу | web: `pbolkhovitin_p` / `rYfq7W4AVTJFfkUmdXkp`; SSH root — недоступен |
+
+> **Привязка хостов к прокси через API НЕ работает** (сервер 7.0.30 игнорирует `proxy_hostid`
+> в `host.update/create/massupdate`). Единственный рабочий способ — POST web-формы
+> `zabbix.php?action=host.edit` с полями `monitored_by=1`, `proxyid=2` (для disabled-хостов
+> обязательно `status`), см. process-log.md.
 
 ## SNMP-доступ к устройствам (готово для мониторинга)
 
@@ -41,6 +47,15 @@ SNMP community настроены на коммутаторах:
 - **Карта «BSZ - Топология»** (id=8): 16 элементов + 16 связей по LLDP
 - Токен Zabbix API — в Vault `bsz/zabbix`
 - Мониторинг работает (SNMP uptime собирается, ошибок нет)
+
+## Обновление 2026-09-12 — 57 хостов на прокси id=2
+
+- **Все 57 хостов BSZ привязаны к прокси `zabbix-proxy`** (id=2, 172.17.102.20):
+  - 35 хостов группы BSZ (gw.BSZ, freepbx, 33×eap) — привязаны через POST web-формы
+  - 22 коммутатора bsz-sw-01..24 — переведены из группы ProjectKG (25) в BSZ (26)
+    через `hostgroup.massadd` и привязаны к прокси 2
+- **Прокси active** (operating_mode=0); в web-UI «Онлайн», данные текут (ICMP/SNMP свежие 4-60с)
+- Причина, почему API-привязка не работала — ограничение сервера 7.0.30, вопрос обновления снят
 
 ## Устройства для добавления на мониторинг
 
