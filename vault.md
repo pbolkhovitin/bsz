@@ -20,13 +20,16 @@
 
 | Путь | Содержимое |
 |------|-----------|
-| `bsz/pve/mpve10` | Proxmox VE (172.17.100.10): url, user (root@pam), token_id (agent), token |
+| `bsz/pve/mpve10` | Proxmox VE (172.17.102.10): url, user (root@pam), token_id (agent), token |
 | `bsz/mikrotik/rb5009` | MikroTik RB5009 API: api_url, user (bszapi), token, identity (gw.BSZ), model |
 | `bsz/snmp` | SNMP community: ro_community (BSZ-m0n1t0r), rw_community (BSZ-m4n4g3) |
 | `bsz/netbox` | NetBox API: url, token, username (bolkhovitin_p) |
 | `bsz/zabbix` | Zabbix API: url, token, user (pbolkhovitin_p) |
 | `bsz/switches/<name>` | креды коммутаторов bsz-sw-XX: login, password, ip, mac |
 | `bsz/pve/mpve10` | Proxmox: url, user (root@pam), token_id (agent), token, **password** |
+| `bsz/mikrotik/crs328` | CRS328 API: api_url (172.17.106.5), user (monitoring), password, identity (bsz-sw-01) |
+| `bsz/freepbx` | FreePBX: url (http://172.17.102.15), web_admin, db_user/password, ami, snmp_community, extensions |
+| `bsz/omada` | Omada: url (https://172.17.102.11:8043), login (asu), password, client_id/secret |
 
 ## Управление
 
@@ -64,7 +67,7 @@ podman exec -e VAULT_ADDR=$VAULT_ADDR -e VAULT_TOKEN=$VAULT_TOKEN vault-bsz vaul
 ## Интеграция
 
 Секреты из Vault используются для:
-- **PVE API** — токен `bsz/pve/mpve10.token` (Proxmox 172.17.100.10)
+- **PVE API** — токен `bsz/pve/mpve10.token` (Proxmox 172.17.102.10)
 - **MikroTik API** — `bsz/mikrotik/rb5009.token` (RB5009, read-only bszapi)
 - **SNMP** — `bsz/snmp.ro_community/rw_community` (для мониторинга коммутаторов)
 
@@ -95,9 +98,9 @@ PVE_TOKEN=$(bash scripts/vault-get.sh bsz/pve/mpve10 token)
 
 | Путь | Содержимое |
 |------|-----------|
-| `bsz/freepbx` | url (http://172.17.103.228), web_admin_user/password, db_user/password/name, ami_user/password/host/port, snmp_community, lxc_vmid, extensions, sip_port |
+| `bsz/freepbx` | url (http://172.17.102.15), web_admin_user/password, db_user/password/name, ami_user/password/host/port, snmp_community, lxc_vmid, extensions, sip_port |
 
-> Web UI FreePBX: admin / (пароль в Vault). AMI: 172.17.103.228:5038.
+> Web UI FreePBX: admin / (пароль в Vault). AMI: 172.17.102.15:5038.
 > SNMP: community `BSZ-m0n1t0r` (для Zabbix). LLDP включён.
 
 ## Omada Controller (2026-09-12)

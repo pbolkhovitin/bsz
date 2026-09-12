@@ -1,12 +1,12 @@
 # Настройка FreePBX через веб-интерфейс (пошагово)
 
-> FreePBX 17.0.33 на **http://172.17.100.15/admin**
+> FreePBX 17.0.33 на **http://172.17.102.15/admin**
 > Логин: admin (креды в Vault `bsz/freepbx/admin`)
 > ⚠️ Программный доступ (curl/API) заблокирован FreePBX Firewall — настройка через браузер.
 
 ## 1. Первичный вход
 
-1. Открыть http://172.17.100.15/admin
+1. Открыть http://172.17.102.15/admin
 2. Войти admin / (пароль из Vault)
 3. Проверить дашборд (Dashboard) — ошибки/предупреждения (notification)
 
@@ -51,7 +51,7 @@
 
 | Параметр | Yealink | Grandstream |
 |----------|---------|-------------|
-| Server | http://172.17.100.15 | http://172.17.100.15 |
+| Server | http://172.17.102.15 | http://172.17.102.15 |
 | Путь | `/pbx?mac=$MAC` | `/Grandstream/cfg$MAC.xml` |
 | Auto provision | On | On |
 

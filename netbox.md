@@ -45,12 +45,12 @@ export NETBOX_URL=$(bash scripts/vault-get.sh bsz/netbox url)   # после з�
   TP-Link JetStream, Proxmox VE, Debian 12
 
 ### Коммутаторы (данные для импорта — `inventory-switches.md`)
-- ~45 шт: D-Link sw-02…sw-17 + ядро, 22× TP-Link JetStream, MikroTik CRS328
-- Идентификация: **MAC** (IP на DHCP до перевода в 172.17.101.0/24)
+- ~25 шт: D-Link bsz-sw-02/05/9/11-24, MikroTik CRS328, RB5009 (см. рескан 2026-09-12)
+- Идентификация: **MAC** (IP в MNG 172.17.101.0/24)
 
 ### Подсети (IPAM)
 - 172.17.100.0/24 (servers), **172.17.101.0/24 (mgmt коммутаторов)**, 172.17.102.0/23 (lan),
-  172.17.103.0/24 (DHCP-пул коммутаторов, временно), 172.17.106.0/23 (security)
+  172.17.103.0/24 (DHCP-пул коммутаторов, временно), 172.17.106.0/23 (ядро/камеры), 172.17.107.0/24 (Wi-Fi)
 
 ## Запуск импорта
 
@@ -130,7 +130,7 @@ bash scripts/netbox_sync_bsz.sh
 ### 6. Будущий скрипт на Zabbix Proxy (по аналогии с projeckt-kg)
 
 > План: автоматический сбор данных и синхронизация NetBox/Zabbix скриптом,
-> размещённым на **Zabbix Proxy (172.17.100.20, LXC 102 на PVE mpve-10)**,
+> размещённым на **Zabbix Proxy (172.17.102.20, LXC 102 на PVE mpve-10)**,
 > аналогично `projeckt-kg/scripts` (`scan_network.py`, `netbox_update_topo.py`).
 
 **Что будет:**
@@ -147,21 +147,21 @@ bash scripts/netbox_sync_bsz.sh
 |-------------|------------|
 | `scan_network.py` | `scan_network_bsz.py` |
 | `netbox_update_topo.py` | `netbox_update_topo_bsz.py` |
-| `deploy_scan_to_proxy.sh` | аналогичный деплой на 172.17.100.20 |
+| `deploy_scan_to_proxy.sh` | аналогичный деплой на 172.17.102.20 |
 | Zabbix API токен | `bsz/zabbix` (создать в Vault) |
 
 **Задачи:**
 - [ ] Подготовить `scan_network_bsz.py` (по образцу projeckt-kg)
-- [ ] Развернуть на Zabbix Proxy (172.17.100.20)
+- [ ] Развернуть на Zabbix Proxy (172.17.102.20)
 - [ ] Cron/timer: ежедневный скан + обновление NetBox
 - [ ] Создать в Vault `bsz/zabbix` (url, token)
 
 ## FreePBX в NetBox (2026-09-11)
 
 - Устройство **freepbx-100** (id=150): type=Linux Server, role=Server, site=BSZ
-- IP Management: **172.17.103.228/32** (обновлён с 172.17.100.15)
+- IP Management: **172.17.102.15/32** (обновлён с 172.17.103.228)
 - Описание: FreePBX 17 / Asterisk 22.10.1 (LXC 103 на PVE mpve-10)
-- Комментарий: номера 2020-2050 (PJSIP), web http://172.17.103.228, SNMP BSZ-m0n1t0r
+- Комментарий: номера 2020-2050 (PJSIP), web http://172.17.102.15, SNMP BSZ-m0n1t0r
 
 ## Точки доступа (EAP) в NetBox (2026-09-12)
 

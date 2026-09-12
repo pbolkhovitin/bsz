@@ -841,3 +841,23 @@ await fetch(form.action, {method:'POST', body: fd});
 - `inventory.md` (полный список коммутаторов, камер, EAP)
 - `inventory-switches.md` (матрица коммутаторов, доступы)
 - Сырьё: `scan/raw/*.json`, `data/fdb_all_2026-09-12.json`, `data/bsz-inventory-2026-09-12.json`, `data/oui_map.json`
+
+### ✅ Актуализация документации (2026-09-12, после полного рескана)
+
+## Что обновлено
+- **wifi.md** — переписан: Omada Controller, 34 EAP, модели, адресация, FDB-привязка
+- **ipam-bsz.md** — фактическая схема: 16 коммутаторов в 101.x, серверы в 102.x, камеры в 106.x
+- **ipam-roadmap.md** — статус миграции: этапы 4-6 завершены, 74 камеры в 106.x
+- **vlan.md** — bridge-структура RB5009 (br-100/101/102/104/106), порты
+- **security.md** — актуальные порты/API/SNMP, ограничения (SNMP через VPN)
+- **config-recommendations.md** — статус LLDP (включён на MikroTik, выключен на D-Link), чек-лист
+- **voip.md** — FreePBX 102.15, GRE-туннели (4 running), телефоны (Yealink ×19)
+- **zabbix.md** — прокси 102.20, 57 хостов, серверы 102.x
+- **netbox.md** — прокси 102.20, FreePBX 102.15, коммутаторы 2026-09-12
+- **vault.md** — PVE 102.10, FreePBX 102.15, crs328/freepbx/omada пути
+- **README.md** — инфраструктура актуальная (серверы 102.x)
+- **AGENTS.md** — ядро/аплинк, EAP ×33, 16 SNMP-коммутаторов
+- **reports/freepbx-setup-guide.md** — 102.15
+- **docs/freepbx-handoff.md** — актуальное состояние FreePBX
+- **reglamenty/acceptance-checklist** — прокси 102.20
+- **maps/topology-2026-09-12.md** — новая Mermaid-карта

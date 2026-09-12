@@ -63,21 +63,21 @@ SNMP community настроены на коммутаторах:
 |--------|-----------|------------|
 | Шлюз | MikroTik RB5009 (172.17.102.1) | SNMP выключен — через RouterOS/API |
 | Коммутаторы | D-Link bsz-sw-03/06/10, CRS328 (106.5) | SNMP BSZ-m0n1t0r ✅ |
-| Серверы | Proxmox .100.10, Debian .100.11 | агент Zabbix |
+| Серверы | Proxmox .102.10, Debian .102.12, FreePBX .102.15 | агент Zabbix |
 | Сеть | Камеры Dahua/Hikvision (106.x) | свой community |
 
-> ✅ **Выполнено (2026-09-09):** группа BSZ (id=26), шаблон Template BSZ SNMP,
-> **23 хоста на прокси**, карта «BSZ - Топология» (id=8).
+> ✅ **Выполнено (2026-09-12):** группа BSZ (id=26), шаблон Template BSZ SNMP,
+> **57 хостов на прокси** (35 BSZ + 22 bsz-sw), карта «BSZ - Топология» (id=8).
 
 ## Архитектура
 
 ```
 [Zabbix server zbx.ais.local 172.17.231.25]   ← общий (projeckt-kg + BSZ)
         ▲  (порт 10051)
-[Zabbix Proxy zabbix-proxy 172.17.100.20]   ← LXC 102 на PVE mpve-10
+[Zabbix Proxy zabbix-proxy 172.17.102.20]   ← LXC 102 на PVE mpve-10
         │  (SNMP BSZ-m0n1t0r)
         ▼
-[Коммутаторы BSZ: bsz-sw-03/06/10, CRS328 (106.5)]
+[Коммутаторы BSZ: bsz-sw-02/05/9/11-24, CRS328 (106.5)]
 ```
 
 ## Конфигурация
@@ -88,7 +88,7 @@ SNMP community настроены на коммутаторах:
 ## Управление
 
 ```bash
-ssh -i ~/.ssh/id_ed25519_pve root@172.17.100.20
+ssh root@172.17.102.20
 systemctl status zabbix-proxy
 ```
 
@@ -96,15 +96,16 @@ systemctl status zabbix-proxy
 
 - [x] Добавить устройства на мониторинг через прокси (SNMP BSZ-m0n1t0r)
 - [x] Создать группу хостов BSZ, шаблоны SNMP
+- [x] Все 57 хостов BSZ привязаны к прокси id=2 (2026-09-12)
 - [ ] Включить SNMP на MikroTik RB5009 (нужен пользователь full)
-- [ ] Обновить IP хостов после фиксации адресов (CRS328 → 106.5)
+- [ ] SNMP bsz-sw-03/06/10 (community отличается)
 ## Плагин NetBox↔Zabbix (netbox_zabbix)
 
 > Обновлено: 2026-09-09
 
 ### Используемый плагин: pbolkhovitin/netbox-zabbix (v2.0.3, форк DanSheps)
 
-- Совместим с NetBox 4.0.0–4.6.99, **внутри NetBox: 172.17.100.11** (или где стоит NetBox)
+- Совместим с NetBox 4.0.0–4.6.99, **внутри NetBox: 172.17.231.26** (где стоит NetBox)
 - Репозиторий: https://github.com/pbolkhovitin/netbox-zabbix
 - Механизм: `post_save/post_delete/m2m_changed` сигналы → RQ-очередь → Zabbix API
 - Настройка: `PLUGINS_CONFIG` (url/username/password) + custom field `zabbix_hostid` (на Device)

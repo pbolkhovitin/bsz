@@ -1,7 +1,19 @@
 # Рекомендации по настройке SNMP и LLDP на коммутаторах
 
-> Обновлять: при изменении настроек на коммутаторах.
+> Обновлено: **2026-09-12**
 > Методология — из `projeckt-kg` (конфигурация D-Link/MikroTik).
+
+## Статус на коммутаторах BSZ (2026-09-12)
+
+| Настройка | Статус |
+|-----------|--------|
+| SNMP community `BSZ-m0n1t0r` | ✅ 16 D-Link (MNG 101.x) + CRS328 |
+| LLDP | ⚠️ **включён только на MikroTik** (RB5009, CRS328); на D-Link — **выключен** |
+| Топология | ✅ построена по **LLDP CRS328 + FDB** (MAC коммутаторов в таблицах) |
+| SNMP bsz-sw-03/06/10 | ⚠️ не отвечают на BSZ-m0n1t0r (community отличается) |
+
+> **Вывод:** LLDP на D-Link для топологии не критичен (FDB достаточно), но включить желательно
+> для мониторинга и автодетекта соседей.
 
 ## LLDP — включить (обязательно для топологии)
 
@@ -18,7 +30,7 @@
 
 > Критично: Admin Status + System Name на всех портах. Без этого топология не строится.
 
-### MikroTik (RouterOS)
+### MikroTik (RouterOS) — уже включён
 ```
 /system lldp set enabled=yes
 /interface bridge lldp set all-nodes=yes  # для bridge-портов
@@ -58,9 +70,11 @@ save
 
 ## Чек-лист «минимум для мониторинга и топологии»
 1. **SNMP:** community `BSZ-m0n1t0r`/`BSZ-m4n4g3`, IP-ACL, запрет write
-2. **LLDP:** Admin Status + System Name на всех портах
+2. **LLDP:** Admin Status + System Name на всех портах (D-Link включить!)
 3. **Telnet/HTTP:** отключить, включить SSH/HTTPS
 4. **SNMP Trap:** Link Up/Down + Authentication
+5. ⚠️ **SNMP через VPN (tun0) нестабилен** — для массового опроса подключаться в сеть напрямую
+   или использовать прокси/мониторинг (Zabbix proxy)
 
 ## NTP (синхронизация времени)
 - SNTP/NTP Client = Enabled

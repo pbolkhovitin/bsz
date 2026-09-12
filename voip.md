@@ -1,8 +1,8 @@
 # VoIP — IP-телефония (проект)
 
-> Дата: 2026-09-02
-> IP-PBX: **FreePBX 17.0.33** (Asterisk) на **172.17.100.15** (LXC 102, PVE mpve-10)
-> Телефоны: **Yealink**, **Grandstream**
+> Дата: **2026-09-12 (актуализировано)**
+> IP-PBX: **FreePBX 17.0.33** (Asterisk 22.10.1) на **172.17.102.15** (LXC 103, PVE mpve-10)
+> Телефоны: **Yealink** (SIP-T30P, ~19 шт в сети), **Grandstream**
 > Внешний транк: **Ростелеком** (SIP)
 > Межподразделенческие транки: **GRE-туннели** (RB5009)
 
@@ -10,12 +10,12 @@
 
 ```mermaid
 graph TB
-    subgraph PBX["172.17.100.0/24 — Серверы"]
-        FREEPBX[FreePBX 17.0.33<br/>172.17.100.15<br/>SIP 5060, RTP 10000-20000]
+    subgraph PBX["172.17.102.0/23 — Серверы"]
+        FREEPBX[FreePBX 17.0.33<br/>172.17.102.15<br/>SIP 5060, RTP 10000-20000]
     end
 
-    subgraph LAN["172.17.102.0/24 — Локальная сеть"]
-        YE[Yealink SIP-телефоны]
+    subgraph LAN["172.17.102/106/107 — сеть"]
+        YE[Yealink SIP-T30P x ~19]
         GS[Grandstream SIP-телефоны]
     end
 
@@ -26,7 +26,8 @@ graph TB
     subgraph GRE["Межподразделенческие связи (RB5009)"]
         GRE1[gre-B1<br/>172.15.29.117/30]
         GRE2[gre-RTP1<br/>172.15.29.121/30]
-        GRE3[gre-RTP2<br/>172.15.29.121/30]
+        GRE3[gre-OP1<br/>172.15.29.125/30]
+        GRE4[gre-ves-BSZ<br/>172.15.29.133/30]
     end
 
     subgraph OTHER_PBX["Другие площадки"]
@@ -40,23 +41,25 @@ graph TB
     FREEPBX --- GRE1
     FREEPBX --- GRE2
     FREEPBX --- GRE3
+    FREEPBX --- GRE4
     GRE1 --- PBX_B
     GRE2 --- PBX_RTP
-    GRE3 --- PBX_RTP
 ```
 
 ## Компоненты
 
-### FreePBX (172.17.100.15)
+### FreePBX (172.17.102.15, LXC 103)
 
 | Параметр | Значение |
 |----------|----------|
-| Веб-интерфейс | http://172.17.100.15/admin |
+| Веб-интерфейс | http://172.17.102.15/admin |
 | SIP-порт | 5060 (UDP/TCP) |
 | RTP-порт | 10000-20000 (UDP) |
-| Версия | FreePBX 17.0.33 / Asterisk |
-| Доступ | admin (креды в Vault `bsz/freepbx/admin`) |
-| LXC | CTID 102 (PVE mpve-10) |
+| Версия | FreePBX 17.0.33 / Asterisk 22.10.1 |
+| Расширения | **2020–2050** (31, PJSIP, пароль `FPbx<номер>!`) |
+| Доступ | admin (креды в Vault `bsz/freepbx`) |
+| AMI | 172.17.102.15:5038 |
+| SNMP | BSZ-m0n1t0r, LLDP включён |
 
 ### SIP-порты (открыть на firewall)
 
@@ -92,13 +95,15 @@ graph TB
 
 > ⏳ Связи настраиваются позже. Туннели GRE уже созданы на RB5009.
 
-### Существующие туннели на RB5009 (из API)
+### Существующие туннели на RB5009 (из API, 2026-09-12)
 
 | Туннель | Адрес (локальный) | Статус |
 |---------|-------------------|--------|
-| gre-B1 | 172.15.29.117/30 | running |
-| gre-RTP1 | 172.15.29.121/30 | stopped |
-| gre-RTP2 | 172.15.29.121/30 | stopped |
+| gre-B1 | 172.15.29.117/30 | running (gw.behteeva 172.15.29.118) |
+| gre-RTP1 | 172.15.29.121/30 | running (GW.RTP.local 172.15.29.122) |
+| gre-OP1 | 172.15.29.125/30 | running (gw.opytnaya 172.15.29.126) |
+| gre-ves-BSZ | 172.15.29.133/30 | running (gw.Vesy-BSZ 172.15.29.134) |
+| gre-RTP2, gre-OP2, gre-B2 | — | stopped |
 
 ### Схема транков между PBX
 
@@ -143,16 +148,22 @@ FreePBX раздаёт телефонам конфигурацию через HT
 
 | Параметр | Значение |
 |----------|----------|
-| HTTP-сервер | http://172.17.100.15 (Apache FreePBX) |
-| Путь Yealink | `http://172.17.100.15/pbx?mac=$MAC` (RPS) |
-| Путь Grandstream | `http://172.17.100.15/Grandstream/cfg$MAC.xml` |
+| HTTP-сервер | http://172.17.102.15 (Apache FreePBX) |
+| Путь Yealink | `http://172.17.102.15/pbx?mac=$MAC` (RPS) |
+| Путь Grandstream | `http://172.17.102.15/Grandstream/cfg$MAC.xml` |
 | Автозапрос | включён (телефон сам запрашивает конфиг) |
 
 ### Подготовка телефонов
 
 - Настроить телефону URL provisioning (через меню телефона или DHCP-опции 66)
-- Опция DHCP 66 (TFTP-сервер) → 172.17.100.15
+- Опция DHCP 66 (TFTP-сервер) → 172.17.102.15
 - Либо статически указать URL конфигурации
+
+### Телефоны в сети (2026-09-12)
+
+- **Yealink SIP-T30P: ~19 шт** (C4:FC:22), IP в 172.17.106.x и 172.17.107.x.
+  Привязка к портам коммутаторов — в `data/fdb_all_2026-09-12.json`.
+- **Grandstream DP750** (C0:74:AD): 172.17.106.21/.22 (за bsz-sw-05, sfp-sfpplus4).
 
 ## Настройка FreePBX (базовая, выполняется)
 
@@ -172,21 +183,22 @@ rtp.conf: rtpstart=10000, rtpend=20000
 
 ### 3. Настроить firewall
 
-- Разрешить UDP 5060, UDP 10000-20000 на FreePBX (172.17.100.15)
+- Разрешить UDP 5060, UDP 10000-20000 на FreePBX (172.17.102.15)
 - Доступ к веб /admin — ограничить (FreePBX Firewall)
 
 ## Статус настройки
 
 | Задача | Статус |
 |--------|--------|
-| FreePBX установлен (LXC 102) | ✅ |
-| IP FreePBX → 172.17.100.15 | ✅ |
+| FreePBX установлен (LXC 103) | ✅ |
+| IP FreePBX → 172.17.102.15 | ✅ |
 | Веб-доступ admin | ✅ |
-| Базовая настройка SIP/RTP/firewall | ⏳ |
+| Базовая настройка SIP/RTP/firewall | ✅ |
+| Расширения 2020–2050 (31) | ✅ |
 | Автопровижининг Yealink/Grandstream | ⏳ |
-| Расширения | ⏳ |
 | Транк Ростелеком | ⏳ (позже) |
 | GRE-транки между площадками | ⏳ (позже) |
+| FreePBX в Zabbix/NetBox | ✅ |
 
 ## Секреты (Vault `bsz/freepbx/`)
 
