@@ -746,3 +746,19 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 ## Следующий шаг (при продолжении)
 - Отладить Playwright-скрипт привязки прокси (клик по опции multiselect в Zabbix 7).
 - Привязать все хосты BSZ к прокси 2 (id=2).
+
+### ⏸️ ПАУЗА 3 — точка продолжения (2026-09-12)
+
+## Диагностика привязки прокси (текущее состояние)
+- Токен Zabbix: `02d00ca7742fb6e7a4104785e33e4e06f02187d3c33d8cf27cf7b35d9b1157e2` (в Vault `bsz/zabbix`)
+- Пользователь `pbolkhovitin_p` (id=5), роль **Super admin role** (id=3), токен "BSZ"
+- **Прокси работают**: ProjectKG (mpve11) передаёт данные (ICMP @ свежий), zabbix-proxy получает конфиг
+- **Проблема**: `host.update`/`massupdate` с `proxy_hostid=2` → success, но `proxyid` остаётся 0
+- `monitored_by=1 + proxy_hostid` → "Invalid parameter /1/proxyid: object does not exist, or no permissions"
+- `proxy.update operating_mode` — работает (менял active↔passive)
+- Web-UI: `pbolkhovitin_p` / `rYfq7W4AVTJFfkUmdXkp` — вход работает; Playwright клик по radio «Прокси» срабатывает, multiselect прокси открывается, но ajax-опции не подгружаются (jsrpc в headless не отдаёт)
+
+## Следующий шаг: изучить вопрос обновления Zabbix server
+- Zabbix **server 7.0.30** (172.17.231.25, zbx.ais.local)
+- Прокси: mpve11 7.0.29, zabbix-proxy 7.0.30
+- Причина для изучения: возможно, ошибка привязки прокси связана с версией сервера/прокси, требуется обновление
