@@ -649,3 +649,10 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - ⚠️ FreePBX сменил IP при перезапуске: 172.17.103.228 → **172.17.102.15** (DHCP)
 - Vault bsz/freepbx обновлён: url=http://172.17.102.15, sip_server=172.17.102.15
 - Телефоны 2020/2021 настроены на старый IP — требуется перенастройка на 172.17.102.15
+
+### Этап 58: Omada Controller — доступы в Vault (2026-09-12)
+
+- Данные Omada Controller сохранены в Vault `bsz/omada` (asu / пароль, client_id/secret)
+- Omada Controller 6.2.14.11 (API v3), LXC 100 на PVE mpve-10, порты 8043/8088/8843
+- Доступ подтверждён: HTTPS 8043 (200), логин asu успешен (API v2 login → token)
+- API v1 (/api/token) не поддерживается — только v2

@@ -99,3 +99,13 @@ PVE_TOKEN=$(bash scripts/vault-get.sh bsz/pve/mpve10 token)
 
 > Web UI FreePBX: admin / (пароль в Vault). AMI: 172.17.103.228:5038.
 > SNMP: community `BSZ-m0n1t0r` (для Zabbix). LLDP включён.
+
+## Omada Controller (2026-09-12)
+
+| Путь | Содержимое |
+|------|-----------|
+| `bsz/omada` | url (https://172.17.102.11:8043), login (asu), password, client_id, client_secret, controller_version (6.2.14.11) |
+
+> Логин: `asu` / пароль в Vault. Веб-порты: 8043 (HTTPS), 8088 (HTTP redirect), 8843 (portal).
+> API v2 login работает (`/api/v2/login` → token), v1 (`/api/token`) — не поддерживается.
+> Контейнер: LXC 100 на PVE mpve-10.
