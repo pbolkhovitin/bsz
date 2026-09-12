@@ -696,3 +696,8 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - Zabbix: +22 хоста eap-* (SNMP BSZ-m0n1t0r, шаблон BSZ) → всего 46 хостов BSZ
 - NetBox: +22 устройства EAP225-Outdoor (роль «Точка доступа»), IP → eth0
 - Исправлена привязка IP 172.17.102.21 (tplinklimited-21 → «Механики»)
+
+### Этап 64: 11 offline-AP в Zabbix и NetBox (2026-09-12)
+
+- Zabbix: +11 AP (disabled, status=1) → всего 57 хостов BSZ (33 AP)
+- NetBox: +11 AP (status=planned, по моделям EAP225/EAP110) → 39 точек доступа

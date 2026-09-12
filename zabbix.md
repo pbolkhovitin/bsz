@@ -135,3 +135,6 @@ systemctl status zabbix-proxy
 - Добавлено **22 AP** (SNMP BSZ-m0n1t0r, шаблон Template BSZ SNMP)
 - Имена: `eap-<транслит>` (eap-gshu, eap-mehaniki, eap-tspu и т.д.)
 - Итого хостов BSZ: **46**
+
+- **+11 offline-AP** добавлены как **disabled** (eap-bigbeg, eap-diffuziya-2-etazh, eap-zhso-kabinet, eap-saharnyy-sklad*, eap-tets-2, eap-tspu-snyata и др.)
+- Итого хостов BSZ: **57** (33 AP: 22 enabled + 11 disabled)
