@@ -701,3 +701,29 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 
 - Zabbix: +11 AP (disabled, status=1) → всего 57 хостов BSZ (33 AP)
 - NetBox: +11 AP (status=planned, по моделям EAP225/EAP110) → 39 точек доступа
+
+### ⏸️ ПАУЗА — точка продолжения (2026-09-12)
+
+## Сделано
+1. **NetBox плагин netbox_zabbix настроен** (был готов: url/username/password, tags=[monitored], template="D-Link DES_DGS Switch by SNMP", group)
+2. **Custom field `zabbix_hostid`** создан (id=1, Integer, dcim.device)
+3. **Привязаны 22 коммутатора** NetBox↔Zabbix (zabbix_hostid, тег monitored)
+4. **Исправлена критическая проблема:** плагин удалял хосты (нет primary_ip4 + группа 25) →
+   - назначен `primary_ip4` всем 28 bsz-sw
+   - конфиг плагина: `group 25 → 26` (BSZ)
+   - NetBox перезапущен
+5. **Хосты пересозданы плагином** в группе ProjectKG (25) с НОВЫМИ hostid (10913-10934)
+6. **zabbix_hostid в NetBox обновлены** на новые hostid (10913+)
+
+## НЕ ДО КОНЦА
+- ⚠️ **Перевод хостов на локальный прокси (172.17.102.20 / id=2) НЕ работает:**
+  - `host.update`/`host.massupdate` возвращают success, но proxy_hostid не сохраняется (SQL-ошибка "UPDATE hosts SET WHERE")
+  - `monitored_by=1 + proxy_hostid` → "object does not exist or no permissions"
+  - Прокси id=2 (zabbix-proxy): state=2 (offline), active mode, TCP до сервера 10051 OK, логи получают конфиг
+- Zabbix 7.0.30, поле host = `proxy_hostid` / `proxyid` / `assigned_proxyid` (все =0)
+- Admin/zabbix вход не подходит (пароль другой); SSH root@zbx (172.17.231.25) — отклонён
+
+## Дальше (при продолжении)
+- Разобраться с привязкой прокси: возможно нужен `proxy_groupid` или passive-прокси, или правка БД Zabbix
+- Либо настроить прокси как passive и привязать
+- После этого: проверить передачу прокси→сервер, обновить zabbix.md/netbox.md
