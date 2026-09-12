@@ -1,0 +1,1465 @@
+{
+ "\u0414\u0440\u0443\u0433\u043e\u0435": [
+  [
+   "00:0C:26:36:DE:94",
+   "Weintek Labs. Inc.",
+   "-",
+   "",
+   "sfp9"
+  ],
+  [
+   "00:0D:E0:81:76:27",
+   "ICPDAS Co.,LTD",
+   "172.17.107.163",
+   "",
+   "sfp9"
+  ],
+  [
+   "00:12:17:DF:8A:ED",
+   "Cisco-Linksys, LLC",
+   "172.17.106.65",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:17:DF:AB:38",
+   "Cisco-Linksys, LLC",
+   "172.17.106.42",
+   "",
+   "combo3"
+  ],
+  [
+   "00:12:17:DF:F2:34",
+   "Cisco-Linksys, LLC",
+   "172.17.106.39",
+   "",
+   "combo3"
+  ],
+  [
+   "00:12:33:B5:8C:3A",
+   "JRC TOKKI Co.,Ltd.",
+   "172.17.106.72",
+   "",
+   "combo3"
+  ],
+  [
+   "00:12:33:B5:8E:0A",
+   "JRC TOKKI Co.,Ltd.",
+   "172.17.106.63",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:33:B5:8E:4A",
+   "JRC TOKKI Co.,Ltd.",
+   "172.17.106.69",
+   "",
+   "combo3"
+  ],
+  [
+   "00:12:33:B5:8E:91",
+   "JRC TOKKI Co.,Ltd.",
+   "172.17.106.62",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:41:F1:DD:B0",
+   "a2i marketing center",
+   "172.17.106.119",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "00:50:56:39:40:6A",
+   "VMware, Inc.",
+   "172.17.107.211",
+   "bor16",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:5A:20:51:12:4F",
+   "Unknown",
+   "172.17.106.29",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "04:F4:1C:65:27:EE",
+   "Routerboard.com",
+   "-",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "04:F4:1C:65:27:EF",
+   "Routerboard.com",
+   "-",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "10:5B:AD:3D:6B:0D",
+   "Mega Well Limited",
+   "172.17.106.12",
+   "NPI414777",
+   "sfp-sfpplus1"
+  ],
+  [
+   "1E:4C:DF:0E:A9:7B",
+   "Unknown",
+   "172.17.107.75",
+   "SHARK-KTUS-H0",
+   "sfp6"
+  ],
+  [
+   "3E:6F:71:DA:64:22",
+   "Unknown",
+   "172.17.107.179",
+   "POCO-X3-NFC",
+   "sfp6"
+  ],
+  [
+   "4E:68:C4:37:D9:DC",
+   "Locally administered",
+   "172.17.107.176",
+   "iPhone",
+   "sfp6"
+  ],
+  [
+   "5C:A6:E6:78:F6:45",
+   "Locally administered",
+   "172.17.107.21",
+   "EAP110-Outdoor-5C-A6-E6-78-F6-45",
+   "sfp-sfpplus1"
+  ],
+  [
+   "5C:E9:31:BD:DB:A8",
+   "Locally administered",
+   "172.17.107.237",
+   "EAP225-Outdoor-5C-E9-31-BD-DB-A8",
+   "sfp-sfpplus1"
+  ],
+  [
+   "6C:B3:11:A1:A5:CE",
+   "Shenzhen Lianrui Electronics Co.,Ltd",
+   "172.17.106.18",
+   "",
+   "sfp-sfpplus2"
+  ],
+  [
+   "7C:4D:8F:75:FB:C2",
+   "HP Inc.",
+   "169.254.150.119",
+   "NPI75FBC2",
+   "sfp-sfpplus1"
+  ],
+  [
+   "92:0F:69:04:EF:DB",
+   "Unknown",
+   "172.17.107.86",
+   "Z-Flip7-pol-zovatela-Aleksandr",
+   "sfp8"
+  ],
+  [
+   "C4:34:6B:55:69:C9",
+   "Hewlett Packard",
+   "172.17.107.150",
+   "Borino-sklad",
+   "sfp-sfpplus1"
+  ],
+  [
+   "C4:FC:22:32:A4:77",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.106.102",
+   "SIP-T30P",
+   "sfp6"
+  ],
+  [
+   "C4:FC:22:32:A5:08",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.107.11",
+   "SIP-T30P",
+   "sfp11"
+  ],
+  [
+   "C4:FC:22:32:A6:A7",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.106.213",
+   "SIP-T30P",
+   "sfp4"
+  ],
+  [
+   "C4:FC:22:32:A8:B1",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.106.152",
+   "SIP-T30P",
+   "sfp12"
+  ],
+  [
+   "C4:FC:22:32:A9:2D",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.107.2",
+   "SIP-T30P",
+   "sfp4"
+  ],
+  [
+   "C4:FC:22:32:A9:85",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.106.177",
+   "SIP-T30P",
+   "combo1"
+  ],
+  [
+   "C4:FC:22:32:AF:96",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.106.187",
+   "SIP-T30P",
+   "combo1"
+  ],
+  [
+   "C4:FC:22:32:B5:0D",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.107.10",
+   "SIP-T30P",
+   "sfp9"
+  ],
+  [
+   "C4:FC:22:32:B9:60",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.107.15",
+   "SIP-T30P",
+   "sfp8"
+  ],
+  [
+   "C4:FC:22:32:BA:D0",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.107.7",
+   "SIP-T30P",
+   "sfp3"
+  ],
+  [
+   "C4:FC:22:32:BE:03",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.107.17",
+   "SIP-T30P",
+   "sfp9"
+  ],
+  [
+   "C4:FC:22:32:C7:55",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.106.183",
+   "SIP-T30P",
+   "combo1"
+  ],
+  [
+   "C4:FC:22:32:C7:67",
+   "YEALINK(XIAMEN) NETWORK TECHNOLOGY CO.,LTD.",
+   "172.17.106.153",
+   "SIP-T30P",
+   "combo1"
+  ],
+  [
+   "CA:8B:08:26:EF:75",
+   "Locally administered",
+   "172.17.107.84",
+   "Z-Flip3-pol-zovatela-Maksim",
+   "sfp6"
+  ],
+  [
+   "D0:22:12:DA:1E:51",
+   "IEEE Registration Authority",
+   "172.17.106.78",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "D0:22:12:DA:61:5E",
+   "IEEE Registration Authority",
+   "172.17.106.79",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "D8:43:AE:47:90:AB",
+   "Micro-Star INTL CO., LTD.",
+   "172.17.107.247",
+   "DESKTOP-9QJE7VI",
+   "sfp4"
+  ],
+  [
+   "F0:23:B9:5D:CD:3D",
+   "IEEE Registration Authority",
+   "172.17.107.209",
+   "TR-D8121IR2V6",
+   "sfp-sfpplus4"
+  ],
+  [
+   "F0:23:B9:5D:CD:3F",
+   "IEEE Registration Authority",
+   "172.17.107.56",
+   "TR-D8121IR2V6",
+   "sfp-sfpplus4"
+  ]
+ ],
+ "\u041c\u0435\u0442\u0435\u043e\u0441\u0442\u0430\u043d\u0446\u0438\u0438": [
+  [
+   "00:12:31:03:70:DB",
+   "Motion Control Systems, Inc.",
+   "172.17.106.53",
+   "",
+   "combo3"
+  ],
+  [
+   "00:12:31:5F:8E:1C",
+   "Motion Control Systems, Inc.",
+   "172.17.106.36",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:5F:8E:E6",
+   "Motion Control Systems, Inc.",
+   "172.17.106.113",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:5F:8F:84",
+   "Motion Control Systems, Inc.",
+   "172.17.106.97",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:60:A1:78",
+   "Motion Control Systems, Inc.",
+   "172.17.106.116",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:60:A4:05",
+   "Motion Control Systems, Inc.",
+   "172.17.106.112",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:60:A5:52",
+   "Motion Control Systems, Inc.",
+   "172.17.106.73",
+   "",
+   "combo3"
+  ],
+  [
+   "00:12:31:60:AE:78",
+   "Motion Control Systems, Inc.",
+   "172.17.106.114",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:73:66:5B",
+   "Motion Control Systems, Inc.",
+   "172.17.106.68",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "00:12:31:73:66:71",
+   "Motion Control Systems, Inc.",
+   "172.17.106.56",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:73:6B:BB",
+   "Motion Control Systems, Inc.",
+   "172.17.106.70",
+   "",
+   "combo3"
+  ],
+  [
+   "00:12:31:73:6B:FF",
+   "Motion Control Systems, Inc.",
+   "172.17.106.103",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:73:6C:6B",
+   "Motion Control Systems, Inc.",
+   "172.17.106.71",
+   "",
+   "combo3"
+  ],
+  [
+   "00:12:31:73:75:87",
+   "Motion Control Systems, Inc.",
+   "172.17.106.99",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "00:12:31:73:78:CD",
+   "Motion Control Systems, Inc.",
+   "172.17.106.74",
+   "",
+   "combo3"
+  ]
+ ],
+ "\u041a\u043e\u043c\u043c\u0443\u0442\u0430\u0442\u043e\u0440\u044b/\u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435": [
+  [
+   "00:AD:24:03:CF:24",
+   "D-Link International",
+   "172.17.101.27",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "6C:72:20:C1:9D:43",
+   "D-Link International",
+   "-",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "78:98:E8:C1:E8:61",
+   "D-Link International",
+   "172.17.106.203",
+   "",
+   "combo4"
+  ],
+  [
+   "88:76:B9:63:68:40",
+   "D-Link Corporation",
+   "172.17.101.11",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "88:76:B9:63:68:59",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "88:76:B9:CC:7D:C0",
+   "D-Link Corporation",
+   "172.17.101.23",
+   "",
+   "sfp9"
+  ],
+  [
+   "88:76:B9:CC:7D:C9",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp9"
+  ],
+  [
+   "A0:A3:F0:BC:A8:F0",
+   "D-Link International",
+   "172.17.101.18",
+   "",
+   "combo3"
+  ],
+  [
+   "A0:A3:F0:BC:A9:20",
+   "D-Link International",
+   "-",
+   "",
+   "combo3"
+  ],
+  [
+   "A4:2A:95:FC:04:60",
+   "D-Link International",
+   "172.17.101.26",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "C8:78:7D:8B:49:B1",
+   "D-Link Corporation",
+   "-",
+   "",
+   "combo1"
+  ],
+  [
+   "D0:32:C3:B9:3A:D0",
+   "D-Link Corporation",
+   "172.17.101.29",
+   "",
+   "sfp5"
+  ],
+  [
+   "D0:32:C3:B9:3A:D9",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp5"
+  ],
+  [
+   "D0:32:C3:B9:3C:50",
+   "D-Link Corporation",
+   "172.17.101.20",
+   "",
+   "sfp2"
+  ],
+  [
+   "D0:32:C3:B9:3C:5A",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp2"
+  ],
+  [
+   "D0:32:C3:B9:3D:F0",
+   "D-Link Corporation",
+   "172.17.101.24",
+   "",
+   "sfp4"
+  ],
+  [
+   "D0:32:C3:B9:3D:F9",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp4"
+  ],
+  [
+   "D0:32:C3:B9:3E:30",
+   "D-Link Corporation",
+   "172.17.101.21",
+   "",
+   "sfp3"
+  ],
+  [
+   "D0:32:C3:B9:3E:39",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp3"
+  ],
+  [
+   "D0:32:C3:B9:3F:B0",
+   "D-Link Corporation",
+   "172.17.101.30",
+   "",
+   "sfp7"
+  ],
+  [
+   "D0:32:C3:B9:3F:B9",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp7"
+  ],
+  [
+   "D0:32:C3:B9:40:70",
+   "D-Link Corporation",
+   "172.17.101.31",
+   "",
+   "sfp12"
+  ],
+  [
+   "D0:32:C3:B9:40:79",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp12"
+  ],
+  [
+   "D0:32:C3:B9:43:B0",
+   "D-Link Corporation",
+   "172.17.101.33",
+   "",
+   "sfp6"
+  ],
+  [
+   "D0:32:C3:B9:43:B9",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp6"
+  ],
+  [
+   "D0:32:C3:B9:45:90",
+   "D-Link Corporation",
+   "172.17.101.25",
+   "",
+   "sfp11"
+  ],
+  [
+   "D0:32:C3:B9:45:99",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp11"
+  ],
+  [
+   "D0:32:C3:B9:50:B0",
+   "D-Link Corporation",
+   "172.17.101.28",
+   "",
+   "sfp8"
+  ],
+  [
+   "D0:32:C3:B9:50:BA",
+   "D-Link Corporation",
+   "-",
+   "",
+   "sfp8"
+  ],
+  [
+   "DC:EA:E7:FE:3F:A0",
+   "D-Link Corporation",
+   "172.17.101.22",
+   "",
+   "sfp-sfpplus1"
+  ]
+ ],
+ "\u041f\u041a": [
+  [
+   "04:42:1A:E9:C7:A5",
+   "ASUSTek COMPUTER INC.",
+   "172.17.106.19",
+   "",
+   "combo2"
+  ],
+  [
+   "28:11:A8:2F:9C:AC",
+   "Intel Corporate",
+   "172.17.107.138",
+   "VOLKOV",
+   "sfp-sfpplus1"
+  ],
+  [
+   "64:D6:9A:10:71:C9",
+   "Intel Corporate",
+   "172.17.107.240",
+   "DESKTOP-J6CVN86",
+   "combo1"
+  ],
+  [
+   "88:AE:DD:0E:55:58",
+   "EliteGroup Computer Systems Co., LTD",
+   "172.17.106.201",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "88:AE:DD:60:30:B1",
+   "EliteGroup Computer Systems Co., LTD",
+   "172.17.106.204",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "88:AE:DD:60:36:B4",
+   "EliteGroup Computer Systems Co., LTD",
+   "172.17.106.207",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "88:AE:DD:60:39:A3",
+   "EliteGroup Computer Systems Co., LTD",
+   "172.17.106.205",
+   "",
+   "combo3"
+  ],
+  [
+   "88:AE:DD:61:9C:2A",
+   "EliteGroup Computer Systems Co., LTD",
+   "172.17.107.135",
+   "OHRANA-KPP",
+   "sfp-sfpplus4"
+  ],
+  [
+   "88:AE:DD:62:C7:C0",
+   "EliteGroup Computer Systems Co., LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "C8:7F:54:59:DB:55",
+   "ASUSTek COMPUTER INC.",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "E8:9C:25:7C:C5:C4",
+   "ASUSTek COMPUTER INC.",
+   "172.17.106.206",
+   "",
+   "sfp-sfpplus1"
+  ]
+ ],
+ "\u041a\u0430\u043c\u0435\u0440\u044b": [
+  [
+   "08:CC:81:A4:83:90",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.169",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "24:32:AE:DB:D0:02",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.98",
+   "",
+   "combo3"
+  ],
+  [
+   "24:32:AE:DB:D0:14",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.162",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "24:32:AE:DB:D0:2F",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.106",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "24:32:AE:FA:38:AC",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.107",
+   "",
+   "combo3"
+  ],
+  [
+   "24:32:AE:FA:38:C7",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.58",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "24:32:AE:FA:38:F5",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.35",
+   "",
+   "combo3"
+  ],
+  [
+   "24:32:AE:FA:39:50",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.91",
+   "",
+   "combo3"
+  ],
+  [
+   "24:32:AE:FA:39:90",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.92",
+   "",
+   "combo3"
+  ],
+  [
+   "3C:E3:6B:94:3A:8A",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.88",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "3C:E3:6B:AB:A1:30",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.159",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "40:7A:A4:C6:97:EE",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:7A:A4:C6:98:62",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:7A:A4:C6:9A:C3",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:7A:A4:C6:9F:4B",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:7A:A4:C6:AB:FB",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:7A:A4:C6:B0:83",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:7A:A4:C6:B1:88",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:7A:A4:C6:B3:CC",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:7A:A4:C6:B4:D1",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "40:AC:BF:48:87:BE",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.129",
+   "",
+   "combo3"
+  ],
+  [
+   "50:E5:38:F5:4C:B6",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.168",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "6C:1C:71:CD:CF:62",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.46",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "98:F1:12:67:37:E6",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.143",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "B4:4C:3B:50:79:2D",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.49",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:32:5F:6E:AB:08",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.163",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:32:5F:6E:AB:B6",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.164",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:32:5F:72:AB:79",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.155",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "BC:5E:33:5A:B8:74",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:5E:33:5A:B9:2A",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.102.106",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "BC:5E:33:5A:B9:81",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.102.108",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "BC:5E:33:5B:90:96",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.241",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "BC:5E:33:8C:54:4D",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.128",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:5E:33:90:13:3C",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.25",
+   "",
+   "combo3"
+  ],
+  [
+   "BC:5E:33:90:13:B3",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.54",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:5E:33:90:13:BF",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.90",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:5E:33:90:13:C5",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "-",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:5E:33:90:13:C9",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.76",
+   "",
+   "combo3"
+  ],
+  [
+   "BC:5E:33:90:13:CD",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.104",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:5E:33:90:13:CE",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.100",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "BC:5E:33:90:13:D7",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.38",
+   "",
+   "combo3"
+  ],
+  [
+   "C4:AA:C4:1F:3E:A3",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.75",
+   "",
+   "combo3"
+  ],
+  [
+   "C4:AA:C4:1F:43:10",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.109",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "D4:43:0E:07:07:71",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.51",
+   "",
+   "combo3"
+  ],
+  [
+   "D4:43:0E:07:07:78",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.96",
+   "",
+   "combo3"
+  ],
+  [
+   "D4:43:0E:62:0A:45",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.33",
+   "",
+   "combo3"
+  ],
+  [
+   "D4:43:0E:62:0A:61",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.89",
+   "",
+   "combo3"
+  ],
+  [
+   "D4:43:0E:62:0A:63",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.48",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "D4:43:0E:62:0A:6C",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.57",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "D4:43:0E:62:0A:6D",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.59",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "D4:43:0E:62:0D:F7",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.156",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "D4:43:0E:DB:EB:C7",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.131",
+   "",
+   "combo3"
+  ],
+  [
+   "D4:E8:53:98:F2:86",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.111",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F4:B1:C2:21:25:C5",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.115",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F4:B1:C2:25:75:F5",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.158",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "F4:B1:C2:AB:A9:AE",
+   "Zhejiang Dahua Technology Co., Ltd.",
+   "172.17.106.150",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:38:0C:71",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.135",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:38:10:56",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.50",
+   "",
+   "combo3"
+  ],
+  [
+   "F8:CE:07:38:20:02",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.61",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:4D:92:80",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.170",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:6D:FD:2F",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.136",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:6D:FD:4F",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.134",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:6D:FD:60",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.44",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:BF:E2:C3",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.77",
+   "",
+   "combo3"
+  ],
+  [
+   "F8:CE:07:BF:E2:E4",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.52",
+   "",
+   "combo3"
+  ],
+  [
+   "F8:CE:07:BF:E5:59",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.101",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:BF:E5:A9",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.108",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:BF:E5:B1",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.94",
+   "",
+   "combo3"
+  ],
+  [
+   "F8:CE:07:BF:E6:A5",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.60",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:BF:E9:5D",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.105",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "F8:CE:07:BF:EA:6A",
+   "ZHEJIANG DAHUA TECHNOLOGYCO.,LTD",
+   "172.17.106.31",
+   "",
+   "combo3"
+  ],
+  [
+   "FC:9F:FD:45:70:B7",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.55",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:45:71:33",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.130",
+   "",
+   "combo3"
+  ],
+  [
+   "FC:9F:FD:45:71:3E",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.147",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:45:71:43",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.146",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:4F:EC:BC",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.34",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:4F:ED:89",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.95",
+   "",
+   "combo3"
+  ],
+  [
+   "FC:9F:FD:4F:ED:8D",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.124",
+   "",
+   "combo3"
+  ],
+  [
+   "FC:9F:FD:4F:ED:93",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.145",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:4F:ED:95",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.132",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:4F:ED:99",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.64",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:4F:ED:9B",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.144",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:4F:ED:9C",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.141",
+   "",
+   "sfp-sfpplus1"
+  ],
+  [
+   "FC:9F:FD:4F:ED:A1",
+   "Hangzhou Hikvision Digital Technology Co.,Ltd.",
+   "172.17.106.121",
+   "",
+   "sfp-sfpplus1"
+  ]
+ ],
+ "AP EAP": [
+  [
+   "10:5A:95:51:EF:5C",
+   "TP-Link Systems Inc.",
+   "172.17.107.26",
+   "EAP225-Outdoor-10-5A-95-51-EF-5C",
+   "sfp12"
+  ],
+  [
+   "48:22:54:6F:79:8C",
+   "TP-Link Systems Inc",
+   "172.17.107.223",
+   "DESKTOP-89NU0FR",
+   "sfp-sfpplus1"
+  ],
+  [
+   "58:04:4F:B4:78:92",
+   "TP-Link Systems Inc.",
+   "172.17.107.36",
+   "EAP225-Outdoor-58-04-4F-B4-78-92",
+   "sfp3"
+  ],
+  [
+   "58:04:4F:B4:7C:28",
+   "TP-Link Systems Inc.",
+   "172.17.107.33",
+   "EAP225-Outdoor-58-04-4F-B4-7C-28",
+   "sfp4"
+  ],
+  [
+   "58:04:4F:B4:7C:2A",
+   "TP-Link Systems Inc.",
+   "172.17.106.138",
+   "EAP225-Outdoor-58-04-4F-B4-7C-2A",
+   "sfp11"
+  ],
+  [
+   "58:04:4F:B4:83:28",
+   "TP-Link Systems Inc.",
+   "172.17.107.159",
+   "EAP225-Outdoor-58-04-4F-B4-83-28",
+   "sfp-sfpplus1"
+  ],
+  [
+   "58:04:4F:B4:90:80",
+   "TP-Link Systems Inc.",
+   "172.17.107.24",
+   "EAP225-Outdoor-58-04-4F-B4-90-80",
+   "sfp6"
+  ],
+  [
+   "58:04:4F:B4:92:36",
+   "TP-Link Systems Inc.",
+   "172.17.107.45",
+   "EAP225-Outdoor-58-04-4F-B4-92-36",
+   "sfp12"
+  ],
+  [
+   "58:04:4F:B4:92:48",
+   "TP-Link Systems Inc.",
+   "172.17.107.35",
+   "EAP225-Outdoor-58-04-4F-B4-92-48",
+   "sfp9"
+  ],
+  [
+   "58:04:4F:B4:92:52",
+   "TP-Link Systems Inc.",
+   "172.17.107.32",
+   "EAP225-Outdoor-58-04-4F-B4-92-52",
+   "sfp5"
+  ],
+  [
+   "58:04:4F:B4:92:56",
+   "TP-Link Systems Inc.",
+   "172.17.107.40",
+   "EAP225-Outdoor-58-04-4F-B4-92-56",
+   "sfp8"
+  ],
+  [
+   "58:04:4F:B4:92:B8",
+   "TP-Link Systems Inc.",
+   "172.17.106.20",
+   "EAP225-Outdoor-58-04-4F-B4-92-B8",
+   "sfp8"
+  ],
+  [
+   "58:04:4F:B4:93:84",
+   "TP-Link Systems Inc.",
+   "172.17.106.123",
+   "EAP225-Outdoor-58-04-4F-B4-93-84",
+   "combo1"
+  ],
+  [
+   "58:04:4F:B4:96:24",
+   "TP-Link Systems Inc.",
+   "172.17.107.37",
+   "EAP225-Outdoor-58-04-4F-B4-96-24",
+   "sfp9"
+  ],
+  [
+   "58:04:4F:B4:97:C2",
+   "TP-Link Systems Inc.",
+   "172.17.107.27",
+   "EAP225-Outdoor-58-04-4F-B4-97-C2",
+   "sfp2"
+  ],
+  [
+   "58:04:4F:B4:98:8E",
+   "TP-Link Systems Inc.",
+   "172.17.107.39",
+   "EAP225-Outdoor-58-04-4F-B4-98-8E",
+   "sfp7"
+  ],
+  [
+   "58:04:4F:B4:98:D2",
+   "TP-Link Systems Inc.",
+   "172.17.106.196",
+   "EAP225-Outdoor-58-04-4F-B4-98-D2",
+   "sfp5"
+  ],
+  [
+   "58:04:4F:B4:98:D4",
+   "TP-Link Systems Inc.",
+   "172.17.107.42",
+   "EAP225-Outdoor-58-04-4F-B4-98-D4",
+   "combo1"
+  ],
+  [
+   "6C:4C:BC:D2:E0:5C",
+   "TP-Link Systems Inc.",
+   "172.17.107.22",
+   "EAP225-Outdoor-6C-4C-BC-D2-E0-5C",
+   "sfp4"
+  ],
+  [
+   "6C:4C:BC:D2:E2:94",
+   "TP-Link Systems Inc.",
+   "172.17.107.38",
+   "EAP225-Outdoor-6C-4C-BC-D2-E2-94",
+   "sfp11"
+  ],
+  [
+   "98:25:4A:C9:F2:5E",
+   "TP-Link Systems Inc",
+   "172.17.107.44",
+   "EAP245-98-25-4A-C9-F2-5E",
+   "sfp-sfpplus1"
+  ],
+  [
+   "B0:A7:B9:E7:17:3F",
+   "TP-Link Systems Inc",
+   "172.17.107.25",
+   "EAP110-Outdoor-B0-A7-B9-E7-17-3F",
+   "sfp-sfpplus1"
+  ]
+ ],
+ "\u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b": [
+  [
+   "C0:74:AD:3D:32:96",
+   "Grandstream Networks, Inc.",
+   "172.17.106.21",
+   "",
+   "sfp-sfpplus4"
+  ],
+  [
+   "C0:74:AD:63:47:1D",
+   "Grandstream Networks, Inc.",
+   "172.17.106.22",
+   "",
+   "sfp-sfpplus1"
+  ]
+ ]
+}

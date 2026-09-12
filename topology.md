@@ -1,7 +1,7 @@
 # Топология сети
 
-> Дата обновления: 2026-09-11 (полный перескан)
-> Источник: LLDP (SNMP lldpRemTable), FDB (dot1qTpFdbTable), ARP (RB5009/CRS328), API RouterOS
+> Дата обновления: **2026-09-12 (полный рескан)**
+> Источник: **API RouterOS** (RB5009 ARP/FDB/LLDP, CRS328 FDB/LLDP), SNMP Q-BRIDGE FDB коммутаторов D-Link, OUI-идентификация
 > ⚠️ Миграция: ядро — **CRS328 (bsz-sw-01, 172.17.106.5)**; инфраструктура/камеры → 172.17.106/107.x
 
 ## Схема (актуальная, Mermaid)
@@ -13,19 +13,23 @@ graph TB
     end
 
     subgraph GW["Шлюз RB5009 (gw.BSZ)"]
-        RB["gw.BSZ<br/>172.17.106.1 / 102.1 / 100.1<br/>04:F4:1C:65:27:EE"]
+        RB["gw.BSZ<br/>172.17.102.1 / 106.1 / 100.1<br/>04:F4:1C:65:27:EE"]
     end
 
-    subgraph TRANSIT["Транзит 106 (br-106)"]
-        SW05["bsz-sw-05 (D-Link)<br/>транзит"]
-        SW02["bsz-sw-02 (DGS-3000)<br/>транзит, жив"]
-    end
-
-    subgraph CORE["Ядро CRS328"]
+    subgraph CORE["Ядро CRS328 (br-106)"]
         CRS["bsz-sw-01 (CRS328-4C-20S-4S+)<br/>172.17.106.5<br/>04:F4:1C:AC:8E:35"]
     end
 
-    subgraph ACC["Доступ (sfp2-sfp12)"]
+    subgraph TRANSIT["Транзит"]
+        SW05["bsz-sw-05 (DGS-1210-20)<br/>101.14, транзит"]
+        SW02["bsz-sw-02 (DGS-3000-28XS)<br/>101.11, распределитель"]
+    end
+
+    subgraph SW9["bsz-sw-9 (DGS-1210-52, 101.18)"]
+        SW9N["52 порта<br/>камеры/метеостанции на портах 3-24"]
+    end
+
+    subgraph ACC["Доступ sfp2-12 (прямо на CRS328)"]
         SW11[bsz-sw-11 sfp2]
         SW12[bsz-sw-12 sfp3]
         SW15[bsz-sw-15 sfp4]
@@ -38,23 +42,40 @@ graph TB
         SW22[bsz-sw-22 sfp12]
     end
 
-    subgraph MGMT["MNG 102 (br-102)"]
-        SW03["bsz-sw-03<br/>172.17.101.12"]
-        SW06["bsz-sw-06<br/>172.17.101.15"]
+    subgraph BEHIND_SW02["За bsz-sw-02 (DGS-3000)"]
+        SW13[bsz-sw-13 101.22 порт10]
+        SW17[bsz-sw-17 101.26 порт2]
+        SW18[bsz-sw-18 101.27 порт12]
+        SW02A[камеры/метеостанции порты 1-21]
+    end
+
+    subgraph MNG["MNG 102 (br-102) — напрямую на RB5009"]
+        SW03["bsz-sw-03<br/>172.17.101.12 (ether5)"]
+        SW06["bsz-sw-06<br/>172.17.101.15 (ether5)"]
     end
 
     subgraph SEG106["Сегмент 106/107"]
-        SW10["bsz-sw-10<br/>172.17.107.53"]
-        SW18[bsz-sw-18]
-        EAPs[TP-Link EAP x N]
+        EAPs[TP-Link EAP x 33]
+        PHONES[Yealink SIP-T30P x 19]
+        CAMS[Камеры Dahua/Hikvision x ~74]
+        WEATHER[Meteoстанции Motion Control x 15]
     end
 
     ISP --> RB
-    RB -- "ether6 (br-106)" --> SW05
-    SW05 -- "--" --> SW02
-    SW02 -- "sfp-sfpplus1" --> CRS
+    RB -- "ether3" --> FREEPBX[FreePBX 172.17.102.15]
     RB -- "ether5 (br-102)" --> SW03
-    SW03 -- "порт17" --> SW06
+    SW03 -- "каскад" --> SW06
+    RB -- "ether6 (br-106)" --> SW05
+    SW05 -- "sfp-sfpplus4" --> CRS
+
+    CRS -- "sfp-sfpplus1" --> SW02
+    SW02 -- "порт 2/10/12" --> SW17
+    SW02 --> SW13
+    SW02 --> SW18
+    SW02 -- "порт 1-21" --> SW02A
+    CRS -- "combo3" --> SW9N
+    CRS -- "combo1" --> DGS10MP[DGS-1210-10MP]
+    CRS -- "combo4" --> DLINK203[D-Link 106.203]
 
     CRS -- "sfp2" --> SW11
     CRS -- "sfp3" --> SW12
@@ -67,62 +88,119 @@ graph TB
     CRS -- "sfp11" --> SW16
     CRS -- "sfp12" --> SW22
 
-    SW05 -. "порт16" .-> SW10
-    SW10 -- "порт16" --> SW18
-    SW10 -- "порт7" --> EAPs
-    SW03 -- "порт2,13" --> EAPs
-    SW06 -- "порт4" --> EAPs
+    SW11 -.-> EAPs
+    SW12 -.-> PHONES
+    SW02A --- CAMS
+    SW9N --- WEATHER
+    SW9N --- CAMS
+    DGS10MP -.-> EAPs
 ```
 
-## Линки (подтверждено LLDP/FDB)
+## Линки (подтверждено LLDP CRS328 + FDB, 2026-09-12)
 
-| А | Порт А | Порт B | B | Метод |
-|---|---|---|---|---|
-| **RB5009** (gw.BSZ) | ether6 (br-106) | — | **bsz-sw-05** | LLDP RB5009 (localport 7), FDB RB5009→CRS328 |
-| bsz-sw-05 | — | — | **bsz-sw-02** (DGS-3000) | LLDP: CRS328 sfp-sfpplus1 → 88:76:B9:63:68:40 |
-| bsz-sw-02 (DGS-3000) | — | sfp-sfpplus1 | **CRS328** (106.5) | LLDP + FDB (порт 5) |
-| RB5009 | ether5 (br-102) | порт1 | **bsz-sw-03** (101.12) | LLDP RB5009 (localport 6), LLDP sw-03 |
-| bsz-sw-03 | порт17 | порт20 | **bsz-sw-06** (101.15) | LLDP с обеих сторон |
-| **CRS328** (106.5) | sfp2 | | bsz-sw-11 | LLDP + FDB |
-| CRS328 | sfp3 | | bsz-sw-12 | LLDP |
-| CRS328 | sfp4 | | bsz-sw-15 | LLDP |
-| CRS328 | sfp5 | | bsz-sw-20 | LLDP |
-| CRS328 | sfp6 | | bsz-sw-24 | LLDP |
-| CRS328 | sfp7 | | bsz-sw-21 | LLDP |
-| CRS328 | sfp8 | | bsz-sw-19 | LLDP |
-| CRS328 | sfp9 | | bsz-sw-14 | LLDP |
-| CRS328 | sfp11 | | bsz-sw-16 | LLDP |
-| CRS328 | sfp12 | | bsz-sw-22 | LLDP |
-| **bsz-sw-10** (107.53) | порт16 | | bsz-sw-18 | LLDP |
-| bsz-sw-10 | порт7 | | EAP245 | LLDP |
+### Аплинк ядра
 
-## Адресация (актуальная)
+| А | Порт | B | Метод |
+|---|---|---|---|
+| **RB5009** (gw.BSZ) | ether6 (br-106) | **bsz-sw-05** | LLDP RB5009 (/ip/neighbor ether6) |
+| bsz-sw-05 (DGS-1210-20, 101.14) | — | **CRS328 sfp-sfpplus4** | LLDP CRS328 + FDB |
+| **CRS328** | sfp-sfpplus1 | **bsz-sw-02 (DGS-3000-28XS)** | LLDP CRS328 + FDB |
+| **CRS328** | combo3 | **bsz-sw-9 (DGS-1210-52)** | LLDP CRS328 |
 
-| Устройство | IP | Bridge |
+### Прямые соседи CRS328 (LLDP, 2026-09-12)
+
+| Порт CRS328 | Сосед | Модель | Примечание |
+|---|---|---|---|
+| sfp-sfpplus1 | bsz-sw-02 | DGS-3000-28XS | распределитель, 204 FDB |
+| sfp-sfpplus4 | bsz-sw-05 + gw.BSZ | DGS-1210-20 | аплинк к шлюзу |
+| combo3 | bsz-sw-9 | DGS-1210-52/ME/B1 | 52 порта, камеры |
+| combo1 | DGS-1210-10MP (C8:78:7D:8B:49:B1) | | 106.192/107.189 |
+| combo4 | D-Link (78:98:E8:C1:E8:61) | | 172.17.106.203 |
+| sfp2 | bsz-sw-11 | DGS-1210-10 | |
+| sfp3 | bsz-sw-12 | DGS-1210-10 | |
+| sfp4 | bsz-sw-15 | DGS-1210-10 | |
+| sfp5 | bsz-sw-20 | DGS-1210-10 | |
+| sfp6 | bsz-sw-24 | DGS-1210-10 | |
+| sfp7 | bsz-sw-21 | DGS-1210-10 | |
+| sfp8 | bsz-sw-19 | DGS-1210-10 | |
+| sfp9 | bsz-sw-14 | DGS-1210-10 | |
+| sfp11 | bsz-sw-16 | DGS-1210-10 | |
+| sfp12 | bsz-sw-22 | DGS-1210-10 | |
+| sfp-sfpplus2 | неопознано (6C:B3:11:A1:A5:CE) | | 172.17.106.18 |
+| combo2 | ASUS (04:42:1A:E9:C7:A5) | | 172.17.106.19 |
+
+### За bsz-sw-02 (DGS-3000-28XS)
+
+| Порт bsz-sw-02 | Подключено | IP |
 |---|---|---|
-| gw.BSZ (RB5009) | 172.17.106.1 / 102.1 / 100.1 / 104.1 | br-106/102/100/104 |
-| bsz-sw-01 (CRS328, ядро) | 172.17.106.5 | br-106 (транзит) |
-| bsz-sw-05 | без mgmt IP (транзит) | br-106 |
-| bsz-sw-02 (DGS-3000) | без mgmt IP (транзит, жив) | br-106 |
-| bsz-sw-03 | 172.17.101.12 | br-102 |
-| bsz-sw-06 | 172.17.101.15 | br-102 |
-| bsz-sw-10 | 172.17.107.53 | br-106 |
-| bsz-sw-11…24 | за ядром (L2) | br-106 |
+| 2 | bsz-sw-17 | 101.26 |
+| 10 | bsz-sw-13 | 101.22 |
+| 12 | bsz-sw-18 | 101.27 |
+| 25 | аплинк к CRS328 sfp-sfpplus1 | |
+| 1,8,13-21 | камеры, метеостанции, ПК | ~50 устройств |
 
-## FDB-сводка (reports/fdb/)
-- CRS328 (106.5): 181 MAC; **sfp-sfpplus1 = 122 MAC (uplink к RB5009)**, остальные порты sfp2-12 → до 10 MAC
-- bsz-sw-10 (107.53): 208 MAC; порт 16 = 201 MAC (uplink)
-- bsz-sw-03 (101.12): 36 MAC
-- bsz-sw-06 (101.15): 33 MAC
+### MNG-коммутаторы на RB5009 ether5 (br-102)
 
-## Ключевые выводы (2026-09-09)
-1. **Ядро сети — CRS328 (bsz-sw-01, 106.5)**, аплинк к шлюзу через **sfp-sfpplus1 → bsz-sw-05 → RB5009 ether6**.
-2. **bsz-sw-05 → DGS-3000 (bsz-sw-02)** — два транзитных коммутатора между шлюзом (ether6) и ядром (sfp-sfpplus1).
-3. **Кластер MNG** (bsz-sw-03/06) подключён к RB5009 ether5 (br-102), отдельно от ядра.
-4. **bsz-sw-10** (107.53) — в сегменте 106, uplink порт 16, к CRS328 напрямую НЕ подключён (видит RB5009 через транзит).
-5. Сегмент 107.x — Wi-Fi (TP-Link EAP225/223/245).
+| Порт RB5009 | Подключено | MAC |
+|---|---|---|
+| ether5 | bsz-sw-03 | 64:29:43:D5:C3:E0 (101.12) |
+| ether5 | bsz-sw-06 | 78:98:E8:E4:C7:90 (101.15) |
+| ether3 | FreePBX | BC:24:11:B0:6B:54 (102.15) |
+
+## Адресация (актуальная, 2026-09-12)
+
+| Устройство | IP | Bridge/подключение |
+|---|---|---|
+| gw.BSZ (RB5009) | 172.17.102.1 / 106.1 / 100.1 | br-106/102/100 |
+| bsz-sw-01 (CRS328, ядро) | 172.17.106.5 | br-106 |
+| bsz-sw-02 (DGS-3000-28XS) | 172.17.101.11 | за CRS328 sfp-sfpplus1 |
+| bsz-sw-05 (транзит) | 172.17.101.14 | CRS328 sfp-sfpplus4 |
+| bsz-sw-9 (DGS-1210-52) | 172.17.101.18 | CRS328 combo3 |
+| bsz-sw-11 | 172.17.101.20 | CRS328 sfp2 |
+| bsz-sw-12 | 172.17.101.21 | CRS328 sfp3 |
+| bsz-sw-13 | 172.17.101.22 (+101.17) | bsz-sw-02 порт10 |
+| bsz-sw-14 | 172.17.101.23 | CRS328 sfp9 |
+| bsz-sw-15 | 172.17.101.24 | CRS328 sfp4 |
+| bsz-sw-16 | 172.17.101.25 | CRS328 sfp11 |
+| bsz-sw-17 | 172.17.101.26 | bsz-sw-02 порт2 |
+| bsz-sw-18 | 172.17.101.27 | bsz-sw-02 порт12 |
+| bsz-sw-19 | 172.17.101.28 | CRS328 sfp8 |
+| bsz-sw-20 | 172.17.101.29 | CRS328 sfp5 |
+| bsz-sw-21 | 172.17.101.30 | CRS328 sfp7 |
+| bsz-sw-22 | 172.17.101.31 | CRS328 sfp12 |
+| bsz-sw-24 | 172.17.101.33 | CRS328 sfp6 |
+| bsz-sw-03 | 172.17.101.12 | RB5009 ether5 |
+| bsz-sw-06 | 172.17.101.15 | RB5009 ether5 |
+| bsz-sw-10 | **172.17.106.215** (не 107.53!) | вне прямого домена CRS328 |
+| DGS-1210-10MP | 172.17.106.192 / 107.189 | CRS328 combo1 |
+
+## FDB-сводка (2026-09-12)
+
+| Коммутатор | FDB записей | uplink порт | Примечание |
+|---|---|---|---|
+| CRS328 (ядро) | 226 | — | sfp-sfpplus1=93 (bsz-sw-02), combo3=36 (bsz-sw-9) |
+| bsz-sw-02 (DGS-3000) | 204 | 25 | 102 MAC за портом 25 |
+| bsz-sw-05 | 203 | 17 | |
+| bsz-sw-9 (52 порта) | 190 | 48 | 156 MAC за портом 48 |
+| bsz-sw-11/12/15/16/19/20/21/22/24 | 176-195 | 9/10 | uplink к CRS328 |
+| bsz-sw-18 | 197 | 20 | |
+| bsz-sw-17 | 102 | 9 | |
+
+## Ключевые выводы (2026-09-12)
+
+1. **Ядро — CRS328 (106.5)**. Аплинк к шлюзу: RB5009 ether6 → **bsz-sw-05** → CRS328 **sfp-sfpplus4**.
+2. **bsz-sw-02 (DGS-3000-28XS)** подключен к CRS328 **sfp-sfpplus1** и является распределителем:
+   за ним bsz-sw-13/17/18 + ~50 камер/метеостанций/ПК.
+3. **bsz-sw-9 (DGS-1210-52)** на CRS328 **combo3** — второй большой коммутатор (камеры, метеостанции).
+4. **10 коммутаторов DGS-1210-10** (11/12/15/16/19/20/21/22/24) подключены **напрямую к CRS328** по SFP (sfp2-12).
+5. **Кластер MNG** (bsz-sw-03/06) подключён к **RB5009 ether5 (br-102)**, FreePBX — ether3.
+6. **bsz-sw-10** фактически на **106.215** (не 107.53); 107.53 занят Xiaomi-устройством.
+7. **74 камеры** (Hikvision 51 + Dahua 23), в основном за bsz-sw-02 и bsz-sw-9.
+8. **33-34 EAP** (TP-Link), телефоны Yealink, метеостанции — в сегменте 106/107.
 
 ## Открытые вопросы
-- combo3 CRS328 (2 MAC: 04:42:1a:e9:c7:a5, 04:f4:1c:ac:8e:37) — неизвестное устройство MikroTik.
-- Полный аплинк bsz-sw-10 (к bsz-sw-05 или bsz-sw-03) не подтверждён.
-- Коммутаторы 11-24 за ядром без доступных IP.
+- combo4 CRS328 (78:98:E8:C1:E8:61, 106.203) — D-Link, какой именно коммутатор?
+- sfp-sfpplus2 (6C:B3:11, 106.18) — Lianrui-устройство, назначение неясно.
+- combo2 (ASUS 04:42:1A, 106.19) — ПК или сервер?
+- Полная привязка камер к портам — по FDB bsz-sw-02/bsz-sw-9 (data/fdb_all_2026-09-12.json).
+- SNMP-доступ bsz-sw-03/06/10 не подтверждён (community отличается).

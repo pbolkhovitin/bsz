@@ -42,3 +42,4 @@ scan/data/all_up.txt# LLDP-слепки (regeneratable)
 data/lldp/
 data/scan_history.md
 scan/data/all_up.txt
+data/oui_map.json

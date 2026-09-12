@@ -803,3 +803,41 @@ await fetch(form.action, {method:'POST', body: fd});
 ## Вывод
 - **Вопрос обновления Zabbix server отпал** — причина не в версиях, а в ограничении API привязки прокси.
 - Zabbix server 7.0.30 работает корректно, данные от всех BSZ-хостов поступают через прокси.
+
+### ✅ Полный рескан сети (2026-09-12) — актуализация топологии
+
+## Выполнено
+1. **RB5009 API** (bszapi): ARP 1682, FDB bridge host 253, DHCP 149, LLDP (/ip/neighbor) 8, интерфейсы 24.
+   Сырьё: `scan/raw/rb5009_dump_2026-09-12.json`.
+2. **CRS328 API** (monitoring): FDB 226, LLDP-соседей 18 (полная карта ядра!), интерфейсы 30.
+   Сырьё: `scan/raw/crs328_dump_2026-09-12.json`.
+3. **SNMP-опрос MNG-коммутаторов** (BSZ-m0n1t0r): 16 коммутаторов D-Link опрошены —
+   sysName/sysDescr + **FDB Q-BRIDGE** каждого (bsz-sw-02/05/9/11-24). Файл `data/fdb_all_2026-09-12.json`.
+4. **OUI-идентификация** (база IEEE 40k): скачана `data/oui_map.json`, скрипты `scripts/oui_db.py`,
+   `scripts/snmp_fdb.py`, `scripts/snmp_lldp.py`.
+
+## Ключевые находки (топология актуализирована)
+- **Аплинк**: RB5009 ether6 → **bsz-sw-05** (DGS-1210-20) → CRS328 **sfp-sfpplus4**.
+- **bsz-sw-02 (DGS-3000-28XS, 101.11)** — НЕ транзит, а **распределитель** на CRS328 **sfp-sfpplus1**:
+  за ним bsz-sw-13 (порт10), bsz-sw-17 (порт2), bsz-sw-18 (порт12) + ~50 камер/метеостанций (порты 1-21).
+- **bsz-sw-9 (DGS-1210-52, 101.18)** на CRS328 **combo3** — второй большой коммутатор (камеры, метеостанции).
+- **10 коммутаторов DGS-1210-10** (11/12/15/16/19/20/21/22/24) — напрямую к CRS328 по SFP (sfp2-12).
+- **bsz-sw-03/06** (101.12/15) — на RB5009 **ether5** (br-102), FreePBX — ether3.
+- **bsz-sw-10 = 172.17.106.215** (а не 107.53!); 107.53 сейчас занят Xiaomi (D8:CE:3A).
+- **bsz-sw-08 переименован в bsz-sw-9** (A0:A3:F0:BC:A8:F0, DGS-1210-52/ME/B1).
+- **74 камеры** (Hikvision 51 + Dahua 23) в ARP; 84 в FDB CRS328. Большинство за bsz-sw-02 и bsz-sw-9.
+- **~34 EAP** TP-Link (107.x), ~19 Yealink T30P, ~15 метеостанций Motion Control (Vaisala).
+- Неопознаны: CRS328 combo4 (78:98:E8:C1:E8:61 = 106.203), sfp-sfpplus2 (6C:B3:11 = 106.18, Lianrui),
+  combo2 (ASUS 04:42:1A = 106.19).
+
+## Проблемы/ограничения
+- SNMP через tun0 (VPN) **нестабилен**: одиночные запросы проходят, пакетные/массовые теряются.
+- bsz-sw-03/06/10 не отвечают на BSZ-m0n1t0r (community отличается — проверить).
+- LLDP на D-Link выключен (топология построена по FDB + LLDP CRS328).
+
+## Документация обновлена
+- `reports/network-rescan-2026-09-12.md` (новый отчёт)
+- `topology.md` (схема Mermaid, линки, адресация)
+- `inventory.md` (полный список коммутаторов, камер, EAP)
+- `inventory-switches.md` (матрица коммутаторов, доступы)
+- Сырьё: `scan/raw/*.json`, `data/fdb_all_2026-09-12.json`, `data/bsz-inventory-2026-09-12.json`, `data/oui_map.json`

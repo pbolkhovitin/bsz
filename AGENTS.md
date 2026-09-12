@@ -72,31 +72,35 @@
 | 172.17.102.0/23 | Локальная сеть | ~110 хостов (DHCP от RB5009) |
 | 172.17.103.0/24 | DHCP-пул коммутаторов (устаревает) | переходные bsz-sw |
 | 172.17.106.0/23 | **Ядро + инфраструктура (br-106)** | CRS328 .5, legacy 106.x |
-| 172.17.107.0/24 | **Wi-Fi/камеры (br-106)** | EAP ×22, bsz-sw-10 .53 |
+| 172.17.107.0/24 | **Wi-Fi/камеры (br-106)** | EAP ×33, телефоны Yealink |
 
-### Сетевое оборудование (найдено)
+### Сетевое оборудование (найдено, 2026-09-12 рескан)
 
 | Устройство | Адрес | MAC | Примечание |
 |------------|-------|-----|------------|
 | MikroTik RB5009 (шлюз/DHCP/DNS) | 172.17.102.1, 172.17.100.1, 172.17.106.1 | 04:F4:1C:65:27:EE | RouterOS 7.23.5, API read-only (bszapi) |
 | MikroTik CRS328 (**bsz-sw-01**, ядро) | **172.17.106.5** | 04:F4:1C:AC:8E:35 | RouterOS 7.23.5, API monitoring (vault bsz/mikrotik/crs328), SNMP BSZ |
-| D-Link bsz-sw-03 | 172.17.101.12 | 64:29:43:D5:C3:E0 | SNMP BSZ |
-| D-Link bsz-sw-06 | 172.17.101.15 | 78:98:E8:E4:C7:90 | SNMP BSZ |
-| D-Link bsz-sw-10 | 172.17.107.53 | 78:98:E8:E4:C9:50 | SNMP BSZ |
-| D-Link bsz-sw-08 | 172.17.101.18 | A0:A3:F0:B5:B8:80 | DHCP br-102 |
-| D-Link bsz-sw-05 (транзит) | — | 6C:72:20:C1:9D:32 | RB5009 ether6 → DGS-3000 → CRS328 |
-| DGS-3000 bsz-sw-02 (транзит) | — | 88:76:B9:63:68:40 | жив, bsz-sw-05 → CRS328 sfp-sfpplus1 |
-| D-Link (LLDP, за ядром) | — | — | bsz-sw-11/12/14/15/16/18/19/20/21/22/24 |
-| TP-Link EAP (Omada) | 172.17.107.x | B0:A7:B9:... | Wi-Fi, ×22 |
+| D-Link **bsz-sw-02** (DGS-3000-28XS) | 172.17.101.11 | 88:76:B9:63:68:40 | распределитель, CRS328 sfp-sfpplus1 |
+| D-Link **bsz-sw-05** (транзит) | 172.17.101.14 | 6C:72:20:C1:9D:32 | RB5009 ether6 → CRS328 sfp-sfpplus4 |
+| D-Link **bsz-sw-9** (DGS-1210-52) | 172.17.101.18 | A0:A3:F0:BC:A8:F0 | CRS328 combo3 (быв. bsz-sw-08) |
+| D-Link bsz-sw-03 | 172.17.101.12 | 64:29:43:D5:C3:E0 | RB5009 ether5 (br-102) |
+| D-Link bsz-sw-06 | 172.17.101.15 | 78:98:E8:E4:C7:90 | RB5009 ether5 (br-102) |
+| D-Link bsz-sw-10 | **172.17.106.215** | 78:98:E8:E4:C9:50 | (не 107.53!) |
+| D-Link bsz-sw-11…24 | 172.17.101.20-33 | D0:32:C3:... | CRS328 sfp2-12 (прямо), 13/17/18 — за bsz-sw-02 |
+| DGS-1210-10MP | 172.17.106.192/107.189 | C8:78:7D:8B:49:B0 | CRS328 combo1 |
+| TP-Link EAP (Omada) | 172.17.107.x | 58:04:4F:... | Wi-Fi, ~34 |
+| Камеры Hikvision/Dahua | 172.17.106.x | 24:32:AE/FC:9F:FD/BC:5E:33 (Hik), F8:CE:07/D4:43:0E (Dahua) | ~74 шт |
 
-### Серверы (172.17.100.0/24)
+### Серверы
 
 | Устройство | Адрес | Службы |
 |------------|-------|--------|
-| MikroTik RB5009 | 172.17.100.1 | DNS, шлюз |
-| Proxmox VE | 172.17.100.10 | SSH, API (3128) |
+| MikroTik RB5009 | 172.17.102.1 / 100.1 / 106.1 | DNS, шлюз |
+| Proxmox VE | 172.17.102.10 | SSH, API (8006/3128) |
+| Omada Controller (LXC 100) | 172.17.102.11 | 8043, MongoDB 27217 |
 | Debian 12 | 172.17.102.12 | SSH |
-| FreePBX 17.0.33 | ⚠️ не в сети (BC:24:11:B5:FB:11) | IP-PBX (Asterisk), веб 80/443, SSH |
+| FreePBX 17 | 172.17.102.15 | IP-PBX (Asterisk), веб 80/443, SSH |
+| Zabbix Proxy (LXC 102) | 172.17.102.20 | SSH, 10051 |
 
 ### VoIP (проект)
 - Телефоны: **Yealink**, **Grandstream**
@@ -129,28 +133,35 @@
 | `scripts/change_snmp_community.sh` | Telnet CLI смена community |
 | `scripts/dlink_community_rpc.py` | Веб-RPC смена community |
 | `scripts/enable_lldp.sh` | Включение LLDP |
+| `scripts/snmp_fdb.py` | SNMP Q-BRIDGE FDB коммутатора D-Link |
+| `scripts/snmp_lldp.py` | SNMP LLDP-соседи коммутатора D-Link |
+| `scripts/collect_all_fdb.py` | Сбор FDB всех MNG-коммутаторов |
+| `scripts/build_topology.py` | Анализ связности по FDB |
+| `scripts/oui_db.py` | Определение вендора по MAC/OUI |
 
-## Сканирование
+## Сканирование (актуальный метод, 2026-09-12)
 
-### Команды
-
-| Этап | Команда |
-|------|---------|
-| Discovery | `nmap -sn 172.17.<s>.0/24 -oG scan/raw/discovery_172_<s>.gnmap` |
-| Порты/службы | `nmap -sS -sV --version-light -T4 -iL <список>` |
-| SNMP (UDP 161) | `nmap -sU -p 161 --open -T4 -iL <список>` |
-| LLDP | `lldpd` + `lldpcli show neighbor` |
+### Источники данных (приоритет — API)
+| Этап | Команда/метод |
+|------|--------------|
+| ARP/FDB/DHCP/LLDP RB5009 | RouterOS API (bszapi, 172.17.102.1:8728) |
+| FDB/LLDP ядра CRS328 | RouterOS API (monitoring, 172.17.106.5:8728) |
+| SNMP-система коммутаторов | `snmpget -v2c -c BSZ-m0n1t0r <ip> .1.3.6.1.2.1.1.5.0` |
+| FDB коммутаторов D-Link | `snmp_fdb.py <ip>` (Q-BRIDGE .1.3.6.1.2.1.17.7.1.2.2.1.2) |
+| Идентификация по MAC | `data/oui_map.json` (база IEEE) |
+| Discovery | `nmap -sn 172.17.<s>.0/24` |
 
 ### Рабочая станция сканирования
-- Fedora (`tpt14g1-fedora`), nmap 7.92, mactelnet, lldpd
-- Интерфейс `enp5s0`: 172.17.100.254/24, 172.17.102.254/24, 172.17.106.254/24 (+ 192.168.40.254/24, 192.168.41.254/24)
-- Маршрут по умолчанию: через 172.17.100.1 (MikroTik RB5009)
-- Все три новые подсети прописаны на интерфейсе — прямой доступ для сканирования
+- Fedora (`tpt14g1-fedora`), nmap, snmpwalk/snmpget, routeros-api, playwright
+- Доступ к сети BSZ — через **tun0 (172.15.0.171, VPN)** + wlp3s0 (10.229.250.89)
+- ⚠️ **SNMP через tun0 нестабилен**: одиночные запросы проходят, массовые/параллельные теряются.
+  Опрошивать по одному с паузами.
+- ⚠️ LLDP на D-Link выключен — связанность строить по **FDB** (MAC коммутаторов в таблицах)
+  + **LLDP CRS328** (единственный источник LLDP в сети).
 
 ## Проблемы сети (справочно)
 
-- Коммутаторы D-Link ещё не найдены в 172.17.0.0/16 (возможно, ещё не переведены или
-  неуправляемые). Поиск продолжается.
-- У MikroTik RB5009 закрыты все порты управления (22/80/443/8291/8728) — доступ только
-  по MAC-telnet или через консоль.
+- SNMP bsz-sw-03/06/10 не отвечает на BSZ-m0n1t0r (community отличается — проверить).
+- У MikroTik RB5009 закрыты все порты управления (22/80/443/8291) — только API 8728 (read-only) и MAC-telnet.
 - Камеры Dahua (40:7A:A4) не отвечают на SNMP community `public` — свои community.
+- 172.17.107.53 занят Xiaomi-устройством (ранее предполагался bsz-sw-10).
