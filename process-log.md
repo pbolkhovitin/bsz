@@ -682,3 +682,11 @@ projeckt-kg (общий Zabbix Server `zbx.ais.local`).
 - 22 AP работают и управляются контроллером; 11 offline (проверить питание/линк)
 - ТЭЦ Родин (192.168.0.254) — в старой подсети
 - Отчёт обновлён (reports/omada-controller-2026-09-12.md)
+
+### Этап 62: SNMP на точках доступа Omada (2026-09-12)
+
+- SNMP работает на 22 ONLINE AP: community BSZ-m0n1t0r, sysDescr "Linux EAP225-Outdoor 3.3.8"
+- Интерфейсы: eth0/wifi0/br0 up, WiFi активен на всех
+- Private MIB TP-Link: 1.3.6.1.4.1.11863.3.2.10
+- Можно добавить AP в Zabbix (SNMP)
+- 11 OFFLINE AP — SNMP нет
